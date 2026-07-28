@@ -42,7 +42,7 @@ export function Navbar() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? 'text-foreground/80' : 'text-white/90'}`}
+                className="text-sm font-semibold transition-colors hover:text-primary text-foreground drop-shadow-sm"
               >
                 {link.name}
               </Link>
@@ -65,9 +65,9 @@ export function Navbar() {
             aria-label="Menüyü Aç"
           >
             {mobileMenuOpen ? (
-              <X className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-white'}`} />
+              <X className="w-6 h-6 text-foreground drop-shadow-sm" />
             ) : (
-              <Menu className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-white'}`} />
+              <Menu className="w-6 h-6 text-foreground drop-shadow-sm" />
             )}
           </button>
         </div>
