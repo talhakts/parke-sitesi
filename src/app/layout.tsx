@@ -28,6 +28,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HomeAndConstructionBusiness",
+              "name": "Parke Ustam",
+              "image": "https://parkeustam.com/images/hero-bg.png",
+              "url": "https://parkeustam.com",
+              "telephone": "+905355067130",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Gebze",
+                "addressRegion": "Kocaeli",
+                "addressCountry": "TR"
+              },
+              "areaServed": ["İstanbul", "Kocaeli", "Gebze", "Anadolu Yakası"]
+            })
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
