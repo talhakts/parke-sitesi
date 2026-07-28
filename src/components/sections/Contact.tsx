@@ -36,8 +36,8 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground/50">Telefon / WhatsApp</p>
-                  <a href="tel:+905555555555" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-                    +90 555 555 55 55
+                  <a href="tel:+905355067130" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                    +90 535 506 71 30
                   </a>
                 </div>
               </div>
@@ -48,8 +48,8 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground/50">E-posta</p>
-                  <a href="mailto:info@uzmanparke.com" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-                    info@uzmanparke.com
+                  <a href="mailto:info@parkeustam.com" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                    info@parkeustam.com
                   </a>
                 </div>
               </div>
@@ -61,7 +61,7 @@ export function Contact() {
                 <div>
                   <p className="text-sm font-medium text-foreground/50">Adres</p>
                   <p className="text-lg font-bold text-foreground">
-                    Örnek Mah. Parke Cad. No:123 Kadıköy / İstanbul
+                    İstanbul, Anadolu Yakası, Gebze, Kocaeli
                   </p>
                 </div>
               </div>
@@ -83,12 +83,12 @@ export function Contact() {
                  İletişim formumuz yapım aşamasındadır. Bize telefon veya WhatsApp üzerinden 7/24 ulaşabilirsiniz. 
                </p>
                <Button size="lg" className="w-full text-lg h-14 rounded-full gap-2 shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" asChild>
-                 <a href="https://wa.me/905555555555" target="_blank" rel="noopener noreferrer">
+                 <a href="https://wa.me/905355067130" target="_blank" rel="noopener noreferrer">
                    WhatsApp'tan Yazın <ArrowRight className="w-5 h-5" />
                  </a>
                </Button>
                <Button size="lg" variant="outline" className="w-full text-lg h-14 rounded-full gap-2 mt-4 glass border-primary/30 text-primary hover:bg-primary hover:text-white transition-all" asChild>
-                 <a href="tel:+905555555555">
+                 <a href="tel:+905355067130">
                    Telefonla Arayın
                  </a>
                </Button>

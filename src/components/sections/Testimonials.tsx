@@ -24,7 +24,7 @@ const testimonials = [
     id: 3,
     name: "Mehmet Demir",
     location: "Üsküdar, İstanbul",
-    comment: "Süpürgelik detaylarına kadar her şey mükemmel. Temiz çalışıyorlar ve çöplerini bile alıp götürüyorlar. Güvenilir usta bulmak zor, Uzman Parke'ye teşekkürler.",
+    comment: "Süpürgelik detaylarına kadar her şey mükemmel. Temiz çalışıyorlar ve çöplerini bile alıp götürüyorlar. Güvenilir usta bulmak zor, Parke Ustam'a teşekkürler.",
     rating: 5,
   },
   {

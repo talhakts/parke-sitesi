@@ -32,7 +32,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <span className={`text-2xl font-bold tracking-tighter ${isScrolled ? 'text-foreground' : 'text-white'}`}>
-              Uzman<span className="text-primary">Parke</span>
+              Parke<span className="text-primary">Ustam</span>
             </span>
           </Link>
 
@@ -51,7 +51,7 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-4">
             <Button variant="default" size="lg" className="rounded-full shadow-lg shadow-primary/20 gap-2 font-semibold" asChild>
-              <a href="tel:+905555555555">
+              <a href="tel:+905355067130">
                 <Phone className="w-4 h-4" />
                 Hemen Ara
               </a>
@@ -94,9 +94,9 @@ export function Navbar() {
                 </Link>
               ))}
               <Button variant="default" className="w-full mt-4 gap-2 rounded-full" size="lg" asChild>
-                <a href="tel:+905555555555">
+                <a href="tel:+905355067130">
                   <Phone className="w-4 h-4" />
-                  +90 555 555 55 55
+                  +90 535 506 71 30
                 </a>
               </Button>
             </div>

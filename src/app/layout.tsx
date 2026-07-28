@@ -8,14 +8,14 @@ import { Footer } from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Uzman Parke | Profesyonel Parke Döşeme ve Sistre Cila",
-  description: "20 yılı aşkın tecrübemizle lüks ve kaliteli parke döşeme, laminat, sistre ve cila hizmetleri sunuyoruz. Ücretsiz keşif ve uygun fiyat garantisiyle.",
-  keywords: ["Parke Döşeme", "Laminat Parke", "Parke Ustası", "Laminat Parke Ustası", "Parke Döşeme Fiyatı", "Parke İşçiliği"],
+  title: "Parke Ustam | İstanbul, Anadolu Yakası, Gebze, Kocaeli Parke Ustası",
+  description: "20 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme, laminat, sistre ve cila hizmetleri sunuyoruz.",
+  keywords: ["Parke Ustam", "Parke Döşeme", "Laminat Parke", "Parke Ustası", "İstanbul Parke Ustası", "Anadolu Yakası Parke", "Gebze Parke Ustası", "Kocaeli Parke", "Parke Döşeme Fiyatı"],
   openGraph: {
-    title: "Uzman Parke | Profesyonel Parke Döşeme",
-    description: "20 yılı aşkın tecrübemizle lüks ve kaliteli parke döşeme hizmeti.",
-    url: "https://uzmanparke.com",
-    siteName: "Uzman Parke",
+    title: "Parke Ustam | Profesyonel Parke Döşeme",
+    description: "20 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde profesyonel parke döşeme hizmeti.",
+    url: "https://parkeustam.com",
+    siteName: "Parke Ustam",
     locale: "tr_TR",
     type: "website",
   },

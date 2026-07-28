@@ -46,18 +46,18 @@ export function Hero() {
             </h1>
             
             <p className="text-lg lg:text-xl text-foreground/80 max-w-xl leading-relaxed">
-              20+ yıllık deneyim ile kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.
+              20+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button size="lg" className="rounded-full h-14 px-8 text-lg gap-2 shadow-lg shadow-primary/20 hover:scale-105 transition-transform" asChild>
-                <a href="tel:+905555555555">
+                <a href="tel:+905355067130">
                   <Phone className="w-5 h-5" />
                   Hemen Ara
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-lg gap-2 glass border-primary/30 hover:bg-primary/10 hover:scale-105 transition-transform" asChild>
-                <a href="https://wa.me/905555555555" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/905355067130" target="_blank" rel="noopener noreferrer">
                   WhatsApp Danışma
                   <ArrowRight className="w-5 h-5" />
                 </a>

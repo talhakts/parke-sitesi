@@ -9,9 +9,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-primary">Uzman Parke</h3>
+            <h3 className="text-2xl font-bold text-primary">Parke Ustam</h3>
             <p className="text-background/80 text-sm leading-relaxed">
-              20 yılı aşkın tecrübemizle yaşam alanlarınıza değer katıyoruz. Profesyonel, garantili ve lüks parke döşeme çözümleri.
+              20 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme çözümleri sunuyoruz.
             </p>
           </div>
 
@@ -32,15 +32,15 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-background/80">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span>Örnek Mah. Parke Cad. No:123 Kadıköy / İstanbul</span>
+                <span>İstanbul, Anadolu Yakası, Gebze, Kocaeli</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <a href="tel:+905555555555" className="hover:text-primary transition-colors">+90 555 555 55 55</a>
+                <a href="tel:+905355067130" className="hover:text-primary transition-colors">+90 535 506 71 30</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <a href="mailto:info@uzmanparke.com" className="hover:text-primary transition-colors">info@uzmanparke.com</a>
+                <a href="mailto:info@parkeustam.com" className="hover:text-primary transition-colors">info@parkeustam.com</a>
               </li>
             </ul>
           </div>
@@ -51,18 +51,14 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-background/80">
               <li className="flex items-center space-x-3">
                 <Clock className="w-5 h-5 text-primary shrink-0" />
-                <span>Pzt - Cmt: 08:30 - 19:00</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <span className="w-5 h-5 shrink-0" />
-                <span>Pazar: Kapalı (Sadece Keşif)</span>
+                <span>7 Gün 24 Saat Hizmetinizdeyiz</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-background/10 text-center text-sm text-background/60">
-          <p>&copy; {new Date().getFullYear()} Uzman Parke. Tüm hakları saklıdır.</p>
+          <p>&copy; {new Date().getFullYear()} Parke Ustam. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>

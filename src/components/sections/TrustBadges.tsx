@@ -19,11 +19,6 @@ const features = [
     icon: ThumbsUp,
     title: "1000+ Tamamlanan İş",
     description: "Yüzlerce mutlu müşteri ve referans."
-  },
-  {
-    icon: FileText,
-    title: "Resmi Firma",
-    description: "Vergi levhalı, faturalı ve güvenilir hizmet."
   }
 ]
 
@@ -31,7 +26,7 @@ export function TrustBadges() {
   return (
     <section className="py-12 bg-background border-b border-border/50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {features.map((feature, index) => (
             <motion.div 
               key={index}
