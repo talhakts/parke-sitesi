@@ -5,23 +5,18 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
-const categories = ["Tümü", "Ev", "Ofis", "Villa"]
+
 
 const projects = [
-  { id: 1, category: "Ev", title: "Salon Laminat Uygulaması", src: "/images/gallery/g1.jpg" },
-  { id: 2, category: "Villa", title: "Masif Parke Döşeme", src: "/images/gallery/g2.jpg" },
-  { id: 3, category: "Ofis", title: "Sistre Cila Yenileme", src: "/images/gallery/g3.jpg" },
-  { id: 4, category: "Ev", title: "Yatak Odası Laminat", src: "/images/gallery/g4.jpg" },
-  { id: 5, category: "Villa", title: "Süpürgelik Montajı", src: "/images/gallery/g5.jpg" },
-  { id: 6, category: "Ofis", title: "Modern Zemin Kaplama", src: "/images/gallery/g6.jpg" },
+  { id: 1, title: "Laminat Parke Döşeme", src: "/images/gallery/g1.jpg" },
+  { id: 2, title: "Laminat Parke Döşeme", src: "/images/gallery/g2.jpg" },
+  { id: 3, title: "Süpürgelik Döşeme", src: "/images/gallery/g3.jpg" },
+  { id: 4, title: "Laminat Parke Döşeme", src: "/images/gallery/g4.jpg" },
+  { id: 5, title: "Süpürgelik Döşeme", src: "/images/gallery/g5.jpg" },
+  { id: 6, title: "Laminat Parke Döşeme", src: "/images/gallery/g6.jpg" },
 ]
 
 export function Gallery() {
-  const [activeCategory, setActiveCategory] = useState("Tümü")
-
-  const filteredProjects = activeCategory === "Tümü" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory)
 
   return (
     <section id="galeri" className="py-20 bg-muted/30">
@@ -35,24 +30,11 @@ export function Gallery() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={activeCategory === category ? "default" : "outline"}
-              onClick={() => setActiveCategory(category)}
-              className={`rounded-full px-6 transition-all ${
-                activeCategory === category ? "shadow-md shadow-primary/20" : ""
-              }`}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
+
 
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {projects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
@@ -70,7 +52,6 @@ export function Gallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="text-primary font-medium text-sm mb-1 block">{project.category}</span>
                   <h3 className="text-white text-xl font-bold">{project.title}</h3>
                 </div>
               </motion.div>
