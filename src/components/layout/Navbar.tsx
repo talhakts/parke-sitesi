@@ -31,7 +31,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className={`text-2xl font-bold tracking-tighter ${isScrolled ? 'text-foreground' : 'text-white'}`}>
+            <span className="text-2xl font-bold tracking-tighter text-foreground drop-shadow-md">
               Parke<span className="text-primary">Ustam</span>
             </span>
           </Link>
