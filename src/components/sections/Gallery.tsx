@@ -8,10 +8,12 @@ import { Button } from '@/components/ui/button'
 const categories = ["Tümü", "Ev", "Ofis", "Villa"]
 
 const projects = [
-  { id: 1, category: "Ev", title: "Salon Laminat Yenileme", src: "/images/before-after.png" },
-  { id: 2, category: "Villa", title: "Masif Parke Uygulaması", src: "/images/before-after.png" },
-  { id: 3, category: "Ofis", title: "LVT Zemin Kaplama", src: "/images/before-after.png" },
-  { id: 4, category: "Ev", title: "Yatak Odası Zemin", src: "/images/before-after.png" },
+  { id: 1, category: "Ev", title: "Salon Laminat Uygulaması", src: "/images/gallery/g1.jpg" },
+  { id: 2, category: "Villa", title: "Masif Parke Döşeme", src: "/images/gallery/g2.jpg" },
+  { id: 3, category: "Ofis", title: "Sistre Cila Yenileme", src: "/images/gallery/g3.jpg" },
+  { id: 4, category: "Ev", title: "Yatak Odası Laminat", src: "/images/gallery/g4.jpg" },
+  { id: 5, category: "Villa", title: "Süpürgelik Montajı", src: "/images/gallery/g5.jpg" },
+  { id: 6, category: "Ofis", title: "Modern Zemin Kaplama", src: "/images/gallery/g6.jpg" },
 ]
 
 export function Gallery() {
@@ -48,7 +50,7 @@ export function Gallery() {
           ))}
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {filteredProjects.map((project) => (
               <motion.div
