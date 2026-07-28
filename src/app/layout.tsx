@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     type: "website",
   },
+  verification: {
+    google: "nxNAelE9Xq4PEkBsAt_2pd6MJv2gfB8jfbX00f1LKeg",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +32,6 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning className="scroll-smooth">
       <head>
-        <meta name="google-site-verification" content="nxNAelE9Xq4PEkBsAt_2pd6MJv2gfB8jfbX00f1LKeg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
