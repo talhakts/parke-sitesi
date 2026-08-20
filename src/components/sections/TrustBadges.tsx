@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -7,7 +7,7 @@ import { ShieldCheck, Award, ThumbsUp, FileText } from 'lucide-react'
 const features = [
   {
     icon: Award,
-    title: "20+ Yıllık Deneyim",
+    title: "40+ Yıllık Deneyim",
     description: "Sektörde uzmanlaşmış profesyonel kadro."
   },
   {
@@ -48,3 +48,4 @@ export function TrustBadges() {
     </section>
   )
 }
+

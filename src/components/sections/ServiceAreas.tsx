@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -45,7 +45,7 @@ export function ServiceAreas() {
             className="h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl glass border border-white/20 relative bg-muted flex items-center justify-center"
           >
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192737.56156540673!2d29.2882372793268!3d40.83295966453965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cad1df6810b411%3A0xcda658516089bd01!2sGebze%2C%20Kocaeli!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192697.79327429115!2d29.04071375!3d40.9825555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac790b17ba8ad%3A0xd2d24ea0437a7ee2!2sAnadolu%20Yakas%C4%B1%2C%20%C4%B0stanbul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
@@ -61,3 +61,4 @@ export function ServiceAreas() {
     </section>
   )
 }
+

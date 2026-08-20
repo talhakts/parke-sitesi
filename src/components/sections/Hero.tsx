@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from 'react'
 import Image from 'next/image'
@@ -46,7 +46,7 @@ export function Hero() {
             </h1>
             
             <p className="text-lg lg:text-xl text-foreground/80 max-w-xl leading-relaxed">
-              20+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.
+              40+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -72,7 +72,7 @@ export function Hero() {
               </div>
               <div className="w-px h-12 bg-border/50"></div>
               <div>
-                <p className="text-3xl font-bold text-foreground">20+</p>
+                <p className="text-3xl font-bold text-foreground">40+</p>
                 <p className="text-sm text-foreground/70">Yıllık Deneyim</p>
               </div>
               <div className="w-px h-12 bg-border/50"></div>
@@ -112,3 +112,4 @@ export function Hero() {
     </section>
   )
 }
+

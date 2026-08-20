@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -29,6 +29,10 @@ const faqs = [
   {
     question: "Süpürgelik montajı fiyata dahil mi?",
     answer: "Süpürgelik montajı ayrı bir işçilik kalemidir. Fiyat hesaplama modülünde veya keşif sırasında süpürgelik talebinizi belirttiğinizde toplam fiyata dahil edilerek size sunulur."
+  },
+  {
+    question: "Hizmet bölgeleriniz nerelerdir?",
+    answer: "Öncelikli olarak İstanbul Anadolu Yakası parke döşeme taleplerinizi karşılıyoruz. Ayrıca Kocaeli parke döşeme ve Gebze parke ustası ihtiyaçlarınızda da tecrübeli ekibimizle hizmetinizdeyiz. İstanbul parke döşeme ve İstanbul parke ustası denildiğinde akla ilk gelen firmalardan biri olarak müşteri memnuniyeti garantisi veriyoruz."
   }
 ]
 
@@ -91,3 +95,5 @@ export function FAQ() {
     </section>
   )
 }
+
+
