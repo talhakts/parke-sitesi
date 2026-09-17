@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { Phone, MapPin, Mail, Clock } from 'lucide-react'
 
@@ -57,8 +57,25 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-background/10 text-center text-sm text-background/60">
-          <p>&copy; {new Date().getFullYear()} Parke Ustam. Tüm hakları saklıdır.</p>
+        <div className="mt-12 pt-8 border-t border-background/10">
+          <div className="mb-8">
+            <h4 className="text-sm font-semibold text-white mb-4">Popüler Hizmet Bölgelerimiz</h4>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-background/60">
+              <Link href="/istanbul/pendik" className="hover:text-primary transition-colors">Pendik Parke Ustası</Link>
+              <Link href="/istanbul/kadikoy" className="hover:text-primary transition-colors">Kadıköy Parke Ustası</Link>
+              <Link href="/istanbul/kartal" className="hover:text-primary transition-colors">Kartal Parke Ustası</Link>
+              <Link href="/istanbul/maltepe" className="hover:text-primary transition-colors">Maltepe Parke Ustası</Link>
+              <Link href="/istanbul/atasehir" className="hover:text-primary transition-colors">Ataşehir Parke Ustası</Link>
+              <Link href="/istanbul/uskudar" className="hover:text-primary transition-colors">Üsküdar Parke Ustası</Link>
+              <Link href="/istanbul/besiktas" className="hover:text-primary transition-colors">Beşiktaş Parke Ustası</Link>
+              <Link href="/istanbul/sisli" className="hover:text-primary transition-colors">Şişli Parke Ustası</Link>
+              <Link href="/kocaeli/gebze" className="hover:text-primary transition-colors">Gebze Parke Ustası</Link>
+              <Link href="/kocaeli/izmit" className="hover:text-primary transition-colors">İzmit Parke Ustası</Link>
+            </div>
+          </div>
+          <div className="text-center text-sm text-background/60">
+            <p>&copy; {new Date().getFullYear()} Parke Ustam. Tüm hakları saklıdır.</p>
+          </div>
         </div>
       </div>
     </footer>

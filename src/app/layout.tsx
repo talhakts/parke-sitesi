@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -48,7 +48,7 @@ export default function RootLayout({
                 "addressRegion": "Kocaeli",
                 "addressCountry": "TR"
               },
-              "areaServed": ["İstanbul", "Kocaeli", "Gebze", "Anadolu Yakası"]
+              "areaServed": ["İstanbul", "Kocaeli", "Gebze", "Anadolu Yakası", "Avrupa Yakası"]
             })
           }}
         />

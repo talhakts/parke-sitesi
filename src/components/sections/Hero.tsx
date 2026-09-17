@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import React from 'react'
 import Image from 'next/image'
@@ -6,14 +6,26 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Phone, ArrowRight, Star } from 'lucide-react'
 
-export function Hero() {
+interface HeroProps {
+  title?: string;
+  highlight?: string;
+  subtitle?: string;
+  description?: string;
+}
+
+export function Hero({ 
+  title = "Profesyonel", 
+  highlight = "Parke Döşeme", 
+  subtitle = "Hizmeti",
+  description = "40+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin."
+}: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="/images/hero-bg.png" 
-          alt="Lüks Parke Döşeme" 
+          alt={`${title} ${highlight}`} 
           fill 
           priority
           className="object-cover object-center"
@@ -38,15 +50,15 @@ export function Hero() {
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-              Profesyonel <br/>
+              {title} <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                Parke Döşeme
+                {highlight}
               </span> <br/>
-              Hizmeti
+              {subtitle}
             </h1>
             
             <p className="text-lg lg:text-xl text-foreground/80 max-w-xl leading-relaxed">
-              40+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.
+              {description}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">

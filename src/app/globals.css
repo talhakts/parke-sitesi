@@ -126,14 +126,19 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
   }
+
   html {
     @apply scroll-smooth;
   }
+
   @media (max-width: 768px) {
-    html, body {
+
+    html,
+    body {
       overflow-x: hidden;
     }
   }

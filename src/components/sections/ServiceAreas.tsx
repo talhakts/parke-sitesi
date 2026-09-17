@@ -1,19 +1,21 @@
-﻿"use client"
+"use client"
 
 import React from 'react'
 import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 
-const districts = [
-  "Kadıköy", "Üsküdar", "Ataşehir", "Maltepe", "Kartal", "Pendik",
-  "Tuzla", "Gebze", "Darıca", "Çayırova", "Körfez", "İzmit"
-]
+import Link from 'next/link'
+import { districts } from '@/lib/districts'
 
 export function ServiceAreas() {
+  const avrupa = districts.filter(d => d.region === "Avrupa Yakası");
+  const anadolu = districts.filter(d => d.region === "Anadolu Yakası");
+  const kocaeli = districts.filter(d => d.region === "Kocaeli");
+
   return (
     <section className="py-20 bg-muted/20 border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -25,16 +27,45 @@ export function ServiceAreas() {
               Hizmet <span className="text-primary">Bölgelerimiz</span>
             </h2>
             <p className="text-lg text-foreground/70 max-w-lg">
-              İstanbul Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme hizmeti sunuyoruz. Size bir telefon kadar yakınız.
+              İstanbul'un tüm ilçelerinde (Anadolu ve Avrupa Yakası) ve Kocaeli bölgelerinde profesyonel parke döşeme hizmeti sunuyoruz.
             </p>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-              {districts.map((district, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-foreground/80 font-medium">
-                  <MapPin className="w-4 h-4 text-primary shrink-0" />
-                  <span>{district}</span>
+            <div className="space-y-6 pt-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+              <div>
+                <h3 className="font-semibold text-lg mb-3 text-primary">İstanbul Anadolu Yakası</h3>
+                <div className="flex flex-wrap gap-2">
+                  {anadolu.map((district, idx) => (
+                    <Link href={`/istanbul/${district.slug}`} key={idx} className="flex items-center gap-1 text-sm bg-background border border-border px-3 py-1.5 rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <MapPin className="w-3 h-3 shrink-0" />
+                      <span>{district.name}</span>
+                    </Link>
+                  ))}
                 </div>
-              ))}
+              </div>
+              
+              <div>
+                <h3 className="font-semibold text-lg mb-3 text-primary">İstanbul Avrupa Yakası</h3>
+                <div className="flex flex-wrap gap-2">
+                  {avrupa.map((district, idx) => (
+                    <Link href={`/istanbul/${district.slug}`} key={idx} className="flex items-center gap-1 text-sm bg-background border border-border px-3 py-1.5 rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <MapPin className="w-3 h-3 shrink-0" />
+                      <span>{district.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-lg mb-3 text-primary">Kocaeli & Çevresi</h3>
+                <div className="flex flex-wrap gap-2">
+                  {kocaeli.map((district, idx) => (
+                    <Link href={`/kocaeli/${district.slug}`} key={idx} className="flex items-center gap-1 text-sm bg-background border border-border px-3 py-1.5 rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <MapPin className="w-3 h-3 shrink-0" />
+                      <span>{district.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
 
