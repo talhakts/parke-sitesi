@@ -49,7 +49,7 @@ export function Hero({
               <span>Google'da 5 Yıldızlı Hizmet</span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
               {title} <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                 {highlight}
@@ -57,7 +57,7 @@ export function Hero({
               {subtitle}
             </h1>
             
-            <p className="text-lg lg:text-xl text-foreground/80 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-foreground/80 max-w-xl leading-relaxed">
               {description}
             </p>
             
@@ -77,22 +77,22 @@ export function Hero({
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex items-center gap-8 pt-8 border-t border-border/50">
+            <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-8 border-t border-border/50">
               <div>
-                <p className="text-3xl font-bold text-foreground">1000+</p>
-                <p className="text-sm text-foreground/70">Mutlu Müşteri</p>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">1000+</p>
+                <p className="text-xs sm:text-sm text-foreground/70">Mutlu Müşteri</p>
               </div>
-              <div className="w-px h-12 bg-border/50"></div>
+              <div className="w-px h-10 sm:h-12 bg-border/50"></div>
               <div>
-                <p className="text-3xl font-bold text-foreground">30+</p>
-                <p className="text-sm text-foreground/70">Yıllık Deneyim</p>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">30+</p>
+                <p className="text-xs sm:text-sm text-foreground/70">Yıllık Deneyim</p>
               </div>
-              <div className="w-px h-12 bg-border/50"></div>
+              <div className="hidden sm:block w-px h-12 bg-border/50"></div>
               <div className="flex flex-col justify-center">
                 <div className="flex gap-1">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="w-5 h-5 fill-accent text-accent" />)}
+                  {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-accent text-accent" />)}
                 </div>
-                <p className="text-sm text-foreground/70 mt-1">Google Puanı</p>
+                <p className="text-xs sm:text-sm text-foreground/70 mt-1">Google Puanı</p>
               </div>
             </div>
           </motion.div>
