@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Parke Ustam | İstanbul, Anadolu Yakası, Gebze, Kocaeli Parke Ustası",
-  description: "40 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme, laminat, sistre ve cila hizmetleri sunuyoruz.",
+  description: "30 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme, laminat, sistre ve cila hizmetleri sunuyoruz.",
   keywords: ["Parke Ustam", "Parke Döşeme", "Laminat Parke", "Parke Ustas", "İstanbul Parke Ustas", "Anadolu Yakası Parke", "Gebze Parke Ustas", "Kocaeli Parke", "Parke Döşeme Fiyatı", "Parke ustası", "istanbul parke döşeme", "istanbul parke ustası", "parke döşeme", "pendik parke döşeme", "pendik parke ustası", "kartal parke ustası", "kartal parke döşeme", "kocaeli parke döşeme", "gebze parke ustası"],
   openGraph: {
     title: "Parke Ustam | Profesyonel Parke Döşeme",
-    description: "40 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde profesyonel parke döşeme hizmeti.",
+    description: "30 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde profesyonel parke döşeme hizmeti.",
     url: "https://parkeustam.com",
     siteName: "Parke Ustam",
     locale: "tr_TR",

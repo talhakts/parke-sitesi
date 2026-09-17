@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${district.name} Parke Ustası | Profesyonel Parke Döşeme | Parke Ustam`,
-    description: `${district.name} ilçesinde profesyonel laminat parke, sistre cila ve parke döşeme hizmeti. 40 yılı aşkın tecrübemizle ücretsiz keşif için bizi arayın!`,
+    description: `${district.name} ilçesinde profesyonel laminat parke, sistre cila ve parke döşeme hizmeti. 30 yılı aşkın tecrübemizle ücretsiz keşif için bizi arayın!`,
     keywords: [
       `${district.name} parke`,
       `${district.name} parke ustası`,
@@ -66,7 +66,7 @@ export default async function KocaeliDistrictPage({ params }: Props) {
         title={district.name}
         highlight="Parke Ustası"
         subtitle="Hizmeti"
-        description={`${district.name} bölgesinde 40+ yıllık deneyim ile kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.`}
+        description={`${district.name} bölgesinde 30+ yıllık deneyim ile kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.`}
       />
       <TrustBadges />
       <Services />

@@ -17,7 +17,7 @@ export function Hero({
   title = "Profesyonel", 
   highlight = "Parke Döşeme", 
   subtitle = "Hizmeti",
-  description = "40+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin."
+  description = "30+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin."
 }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -84,7 +84,7 @@ export function Hero({
               </div>
               <div className="w-px h-12 bg-border/50"></div>
               <div>
-                <p className="text-3xl font-bold text-foreground">40+</p>
+                <p className="text-3xl font-bold text-foreground">30+</p>
                 <p className="text-sm text-foreground/70">Yıllık Deneyim</p>
               </div>
               <div className="w-px h-12 bg-border/50"></div>

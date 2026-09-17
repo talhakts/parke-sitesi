@@ -11,7 +11,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-primary">Parke Ustam</h3>
             <p className="text-background/80 text-sm leading-relaxed">
-              40 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme çözümleri sunuyoruz.
+              30 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme çözümleri sunuyoruz.
             </p>
           </div>
 
