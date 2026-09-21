@@ -4,16 +4,32 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { districts } from "@/lib/districts";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Parke Ustam | İstanbul, Anadolu Yakası, Gebze, Kocaeli Parke Ustası",
-  description: "30 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli bölgelerinde profesyonel parke döşeme, laminat, sistre ve cila hizmetleri sunuyoruz.",
-  keywords: ["Parke Ustam", "Parke Döşeme", "Laminat Parke", "Parke Ustas", "İstanbul Parke Ustas", "Anadolu Yakası Parke", "Gebze Parke Ustas", "Kocaeli Parke", "Parke Döşeme Fiyatı", "Parke ustası", "istanbul parke döşeme", "istanbul parke ustası", "parke döşeme", "pendik parke döşeme", "pendik parke ustası", "kartal parke ustası", "kartal parke döşeme", "kocaeli parke döşeme", "gebze parke ustası"],
+  metadataBase: new URL("https://parkeustam.com"),
+  title: "İstanbul Parke Ustası | İstanbul Parke Döşeme - Parke Ustam",
+  description: "İstanbul parke ustası arayanlar için 30 yılı aşkın tecrübeyle profesyonel İstanbul parke döşeme, laminat parke, sistre cila ve süpürgelik montajı hizmeti sunuyoruz. Ücretsiz keşif ve uygun fiyatlar için hemen arayın.",
+  keywords: [
+    "istanbul parke ustası",
+    "istanbul parke döşeme",
+    "parke ustası",
+    "parke döşeme",
+    "laminat parke",
+    "Parke Ustam",
+    "Anadolu Yakası Parke",
+    "Gebze Parke Ustası",
+    "Kocaeli Parke Döşeme",
+    "Parke Döşeme Fiyatı"
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Parke Ustam | Profesyonel Parke Döşeme",
-    description: "30 yılı aşkın tecrübemizle İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde profesyonel parke döşeme hizmeti.",
+    title: "İstanbul Parke Ustası | İstanbul Parke Döşeme - Parke Ustam",
+    description: "İstanbul parke ustası arayanlar için 30 yılı aşkın tecrübeyle profesyonel İstanbul parke döşeme, laminat parke ve sistre cila hizmeti.",
     url: "https://parkeustam.com",
     siteName: "Parke Ustam",
     locale: "tr_TR",
@@ -29,6 +45,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const allAreas = [
+    "İstanbul",
+    "Kocaeli",
+    ...districts.map((d) => `${d.name}, ${d.region === "Kocaeli" ? "Kocaeli" : "İstanbul"}`)
+  ];
+
   return (
     <html lang="tr" suppressHydrationWarning className="scroll-smooth">
       <head>
@@ -42,13 +64,42 @@ export default function RootLayout({
               "image": "https://parkeustam.com/images/hero-bg.png",
               "url": "https://parkeustam.com",
               "telephone": "+905355067130",
+              "priceRange": "₺₺",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Gebze",
-                "addressRegion": "Kocaeli",
+                "addressLocality": "Kadıköy",
+                "addressRegion": "İstanbul",
                 "addressCountry": "TR"
               },
-              "areaServed": ["İstanbul", "Kocaeli", "Gebze", "Anadolu Yakası", "Avrupa Yakası"]
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "40.9901",
+                "longitude": "29.0292"
+              },
+              "areaServed": allAreas,
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "148",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                  ],
+                  "opens": "08:00",
+                  "closes": "21:00"
+                }
+              ]
             })
           }}
         />

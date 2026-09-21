@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 
@@ -59,10 +60,12 @@ export function WhyUs() {
           >
             {/* Dekoratif Gradient */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-accent/30 mix-blend-overlay z-10" />
-            <img 
+            <Image 
               src="/images/service-laminate.png" 
-              alt="Parke Döşeme Ustası" 
-              className="absolute inset-0 w-full h-full object-cover"
+              alt="İstanbul parke döşeme ustası laminat ve lamine parke montajı" 
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
             />
           </motion.div>
 

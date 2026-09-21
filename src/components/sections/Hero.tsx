@@ -11,13 +11,17 @@ interface HeroProps {
   highlight?: string;
   subtitle?: string;
   description?: string;
+  imageAlt?: string;
+  customH1?: React.ReactNode;
 }
 
 export function Hero({ 
-  title = "Profesyonel", 
+  title = "İstanbul", 
   highlight = "Parke Döşeme", 
-  subtitle = "Hizmeti",
-  description = "30+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin."
+  subtitle = "ve Parke Ustası Hizmeti",
+  description = "30+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.",
+  imageAlt = "İstanbul parke ustası profesyonel parke döşeme hizmeti",
+  customH1
 }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -25,7 +29,7 @@ export function Hero({
       <div className="absolute inset-0 z-0">
         <Image 
           src="/images/hero-bg.png" 
-          alt={`${title} ${highlight}`} 
+          alt={imageAlt} 
           fill 
           priority
           className="object-cover object-center"
@@ -49,13 +53,17 @@ export function Hero({
               <span>Google'da 5 Yıldızlı Hizmet</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-              {title} <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                {highlight}
-              </span> <br/>
-              {subtitle}
-            </h1>
+            {customH1 ? (
+              customH1
+            ) : (
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+                {title} <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                  {highlight}
+                </span> <br/>
+                {subtitle}
+              </h1>
+            )}
             
             <p className="text-base sm:text-lg lg:text-xl text-foreground/80 max-w-xl leading-relaxed">
               {description}

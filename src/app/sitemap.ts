@@ -5,12 +5,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://parkeustam.com';
 
   const districtUrls = districts.map((district) => {
-    const regionPath = district.region === 'Kocaeli' ? 'kocaeli' : 'istanbul';
+    const isIstanbul = district.region !== 'Kocaeli';
+    const regionPath = isIstanbul ? 'istanbul' : 'kocaeli';
     return {
       url: `${baseUrl}/${regionPath}/${district.slug}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
+      changeFrequency: (isIstanbul ? 'weekly' : 'monthly') as 'weekly' | 'monthly',
+      priority: isIstanbul ? 0.9 : 0.6,
     };
   });
 
