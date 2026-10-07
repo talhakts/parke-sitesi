@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { districts } from '@/lib/districts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://parkeustam.com';
+  const baseUrl = 'https://www.parkeustam.com';
 
   const districtUrls = districts.map((district) => {
     const isIstanbul = district.region !== 'Kocaeli';

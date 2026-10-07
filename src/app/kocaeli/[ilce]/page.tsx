@@ -56,10 +56,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${district.name} Parke Ustası | Kocaeli Parke Döşeme`,
       description: `${district.name} genelinde profesyonel ve garantili parke döşeme hizmeti.`,
-      url: `https://parkeustam.com/kocaeli/${district.slug}`,
+      url: `https://www.parkeustam.com/kocaeli/${district.slug}`,
       siteName: "Parke Ustam",
       locale: "tr_TR",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${district.name} Parke Ustası | Kocaeli Parke Döşeme`,
+      description: `${district.name} genelinde profesyonel ve garantili parke döşeme hizmeti.`,
     },
   };
 }
@@ -109,8 +114,8 @@ export default async function KocaeliDistrictPage({ params }: Props) {
             "@context": "https://schema.org",
             "@type": "HomeAndConstructionBusiness",
             "name": `${district.name} Parke Ustası | Kocaeli Parke Döşeme - Parke Ustam`,
-            "image": "https://parkeustam.com/images/hero-bg.png",
-            "url": `https://parkeustam.com/kocaeli/${district.slug}`,
+            "image": "https://www.parkeustam.com/images/hero-bg.png",
+            "url": `https://www.parkeustam.com/kocaeli/${district.slug}`,
             "telephone": "+905355067130",
             "priceRange": "₺₺",
             "address": {

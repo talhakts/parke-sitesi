@@ -9,7 +9,7 @@ import { districts } from "@/lib/districts";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://parkeustam.com"),
+  metadataBase: new URL("https://www.parkeustam.com"),
   title: "İstanbul Parke Ustası | İstanbul Parke Döşeme - Parke Ustam",
   description: "İstanbul parke ustası arayanlar için 30 yılı aşkın tecrübeyle profesyonel İstanbul parke döşeme, laminat parke, sistre cila ve süpürgelik montajı hizmeti sunuyoruz. Ücretsiz keşif ve uygun fiyatlar için hemen arayın.",
   keywords: [
@@ -30,10 +30,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "İstanbul Parke Ustası | İstanbul Parke Döşeme - Parke Ustam",
     description: "İstanbul parke ustası arayanlar için 30 yılı aşkın tecrübeyle profesyonel İstanbul parke döşeme, laminat parke ve sistre cila hizmeti.",
-    url: "https://parkeustam.com",
+    url: "https://www.parkeustam.com",
     siteName: "Parke Ustam",
     locale: "tr_TR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "İstanbul Parke Ustası | İstanbul Parke Döşeme - Parke Ustam",
+    description: "İstanbul parke ustası arayanlar için 30 yılı aşkın tecrübeyle profesyonel İstanbul parke döşeme, laminat parke ve sistre cila hizmeti.",
   },
   verification: {
     google: "nxNAelE9Xq4PEkBsAt_2pd6MJv2gfB8jfbX00f1LKeg",
@@ -61,8 +66,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "HomeAndConstructionBusiness",
               "name": "Parke Ustam",
-              "image": "https://parkeustam.com/images/hero-bg.png",
-              "url": "https://parkeustam.com",
+              "image": "https://www.parkeustam.com/images/hero-bg.png",
+              "url": "https://www.parkeustam.com",
               "telephone": "+905355067130",
               "priceRange": "₺₺",
               "address": {
