@@ -82,7 +82,7 @@ export function Testimonials() {
                     ))}
                   </div>
                   <p className="text-foreground/80 italic mb-6 leading-relaxed relative z-10">
-                    "{t.comment}"
+                    &ldquo;{t.comment}&rdquo;
                   </p>
                   <div>
                     <h4 className="font-bold text-foreground">{t.name}</h4>

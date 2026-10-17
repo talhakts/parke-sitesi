@@ -1,11 +1,8 @@
 "use client"
 
-import React, { useState } from 'react'
+import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-
-
 
 interface GalleryProps {
   districtName?: string;
@@ -14,19 +11,17 @@ interface GalleryProps {
 const baseProjects = [
   { id: 1, title: "Laminat Parke Döşeme", service: "Laminat Parke", src: "/images/gallery/g1.jpg" },
   { id: 2, title: "Derzli Parke Uygulaması", service: "Derzli Parke", src: "/images/gallery/g2.jpg" },
-  { id: 3, title: "Süpürgelik Montajı", service: "Lake Süpürgelik", src: "/images/gallery/g3.jpg" },
+  { id: 3, title: "Lake Süpürgelik Montajı", service: "Lake Süpürgelik", src: "/images/gallery/g3.jpg" },
   { id: 4, title: "Modern Salon Parke Döşeme", service: "Salon Zemin Kaplama", src: "/images/gallery/g4.jpg" },
-  { id: 5, title: "Detay Süpürgelik İşçiliği", service: "Süpürgelik İşçiliği", src: "/images/gallery/g5.jpg" },
+  { id: 5, title: "Detay Süpürgelik Gönye İşçiliği", service: "Süpürgelik İşçiliği", src: "/images/gallery/g5.jpg" },
   { id: 6, title: "Garantili Parke Uygulaması", service: "Laminat Montaj", src: "/images/gallery/g6.jpg" },
 ]
 
 export function Gallery({ districtName }: GalleryProps) {
   const projects = baseProjects.map((item) => ({
     ...item,
-    displayTitle: districtName ? `${districtName} ${item.title}` : item.title,
-    altText: districtName 
-      ? `laminat parke ${districtName} - ${item.service} parke döşeme ustası` 
-      : `parke döşeme istanbul - ${item.service} profesyonel parke ustası`
+    displayTitle: item.title,
+    altText: `${item.title} - ${item.service} parke döşeme işçilik örneği Parke Ustam`
   }));
 
   return (
@@ -34,13 +29,12 @@ export function Gallery({ districtName }: GalleryProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="text-center mb-12 space-y-4">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
-            {districtName ? `${districtName} Referans ` : "Referans "}
-            <span className="text-primary">Galerisi</span>
+            Uygulama ve Referans <span className="text-primary">Galerisi</span>
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             {districtName 
-              ? `${districtName} bölgesinde tamamladığımız parke döşeme ve süpürgelik uygulamalarımızdan örnekler.`
-              : "Öncesi ve sonrası fotoğraflarıyla dönüştürdüğümüz yaşam alanlarına göz atın."}
+              ? `${districtName} bölgesinde sunduğumuz profesyonel parke döşeme ve süpürgelik işçiliği standartlarımızı inceleyin.`
+              : "Yüksek standartlı laminat parke döşeme ve süpürgelik montajı işçiliklerimizden örnekler."}
           </p>
         </div>
 

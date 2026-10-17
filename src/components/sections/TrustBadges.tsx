@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Award, ThumbsUp, FileText } from 'lucide-react'
+import { ShieldCheck, Award, ThumbsUp } from 'lucide-react'
 
 const features = [
   {

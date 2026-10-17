@@ -6,6 +6,13 @@ export interface DistrictInfo {
   neighbors: { name: string; slug: string; region: "istanbul" | "kocaeli" }[];
   highlights: string[];
   faqs: { question: string; answer: string }[];
+  metaTitle?: string;
+  metaDescription?: string;
+  customH1Text?: string;
+  servicesDetail?: { title: string; desc: string; link?: string }[];
+  processSteps?: { title: string; desc: string }[];
+  priceFactors?: string[];
+  neighborhoods?: string[];
 }
 
 export const districtData: Record<string, DistrictInfo> = {
@@ -148,22 +155,98 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "pendik",
     name: "Pendik",
     region: "Anadolu Yakası",
-    intro: "Pendik merkezden Kurtköy Yenişehir'deki villa ve rezidanslara kadar uzanan geniş bölgede en çok tercih edilen parke ustasıyız. Kaynarca, Güzelyalı, Batı Mahallesi ve Çamlık'ta hem konutlara hem de ticari alanlara özel sağlam zemin kaplamaları sunuyoruz. Pendik parke ustası arayan müşterilerimize hızlı mobil servisimiz ve 30 yıllık ustalığımızla hizmet veriyoruz.",
+    metaTitle: "Pendik Parke Ustası | Laminat Parke ve Süpürgelik",
+    metaDescription: "Pendik'te laminat parke döşeme, parke tamiri ve süpürgelik montajı hizmetlerini inceleyin. Uygun uygulama seçenekleri ve teklif için Parke Ustam ile iletişime geçin.",
+    customH1Text: "Pendik Parke Ustası ve Laminat Parke Döşeme",
+    intro: "Pendik genelinde Batı Mahallesi sahil hattından Kurtköy, Yenişehir, Çamlık ve Kaynarca'ya kadar tüm konut, ofis ve villa projelerinde 30 yılı aşkın tecrübemizle profesyonel parke döşeme hizmeti sunuyoruz. Pendik parke ustası ekibimiz; 8mm, 10mm ve 12mm derzli laminat parke, 6-10 cm lake süpürgelik montajı, kabaran parke tamiri ve eski zemin yenileme alanında garantili işçilik sağlar. Yerinde ücretsiz keşif yaparak net metraj ve şeffaf fiyat teklifi veriyoruz.",
     neighbors: [
       { name: "Kartal", slug: "kartal", region: "istanbul" },
       { name: "Tuzla", slug: "tuzla", region: "istanbul" },
+      { name: "Maltepe", slug: "maltepe", region: "istanbul" },
       { name: "Sultanbeyli", slug: "sultanbeyli", region: "istanbul" },
       { name: "Gebze", slug: "gebze", region: "kocaeli" }
     ],
     highlights: [
-      "Kurtköy ve Pendik sahil hattına 30 dakikada keşif desteği",
-      "Yüksek yoğunluklu HDF tabanlı, çizilmez laminat parke çeşitleri",
-      "Fiyat-performans odaklı süpürgelik ve kapı altı profil çözümleri"
+      "Pendik merkez, Kurtköy ve tüm mahallelere aynı gün ücretsiz keşif ve numune servisi",
+      "Kilit sistemini koruyan 10-15 mm duvar genleşme payı ve ses yalıtımlı zemin şiltesi uygulaması",
+      "Köşe birleşimlerinde 45° gönye kesimli 1. sınıf süpürgelik işçiliği ve 1 günde temiz teslimat"
+    ],
+    servicesDetail: [
+      {
+        title: "Pendik Laminat Parke Döşeme",
+        desc: "Yoğun kullanıma dayanıklı 32. ve 33. sınıf AC4/AC5 laminat parkelerin tozsuz ve nizami montajı. Derzli veya derzsiz modellerde neme dayanıklı HDF kilit sistemiyle uzun ömürlü zeminler.",
+        link: "/hizmetler/laminat-parke-doseme"
+      },
+      {
+        title: "Pendik Süpürgelik Montajı",
+        desc: "6 cm, 8 cm ve 10 cm lake, ahşap veya MDF süpürgeliklerin hassas 45 derece gönye kesimle montajı. Duvar diplerindeki genleşme boşluklarını kusursuz şekilde kapatan estetik bitişler.",
+        link: "/hizmetler/supurgelik-montaji"
+      },
+      {
+        title: "Pendik Parke Tamiri ve Bakımı",
+        desc: "Su teması veya genleşme yetersizliğinden kabaran, şişen ve ses yapan parkelerin onarımı. Kilit hasarı görmüş panellerin lokal değişimi ve kapı altı sürtme ayarları.",
+        link: "/hizmetler/parke-tamiri"
+      },
+      {
+        title: "Pendik Parke Döşeme İşçilik Fiyatları",
+        desc: "Pendik genelinde metrekareye, eşyalı/boş daire durumuna ve eski zemin hazırlığına göre şeffaf işçilik maliyetleri. Sürpriz ek maliyet olmadan yerinde net fiyatlandırma.",
+        link: "/parke-doseme-fiyatlari"
+      }
+    ],
+    processSteps: [
+      {
+        title: "1. Zemin Hazırlığı ve Kot Kontrolü",
+        desc: "Mevcut şapın veya eski zeminin mastar ile düzlüğü ve nem seviyesi ölçülür. Çıkıntılar traşlanır, çukurlar doldurulur ve yüzey süpürülerek tozdan arındırılır."
+      },
+      {
+        title: "2. Nem Bariyeri ve Akustik Şilte Serimi",
+        desc: "Betondan gelebilecek nemi kesmek ve adımlama seslerini yutmak amacıyla 3-5 mm yüksek yoğunluklu kapalı hücreli şilte serilir."
+      },
+      {
+        title: "3. Kilitli Sistem Montajı ve Genleşme Boşluğu",
+        desc: "Parkeler ışık yönüne uygun açı ile döşenir. Mevsimsel genleşmelere karşı tüm duvar diplerinde 10-15 mm dilatasyon boşluğu bırakılarak kabarma riski önlenir."
+      },
+      {
+        title: "4. Süpürgelik ve Eşik Profillerinin Takılması",
+        desc: "Köşe birleşimleri 45 derecelik gönye testere ile kesilerek boşluksuz monte edilir. Islak hacim veya seramik geçişlerine uygun kot profilleri sabitlenir."
+      },
+      {
+        title: "5. Temiz Teslimat ve Müşteri Kabulü",
+        desc: "Uygulama sonrası montaj atıkları temizlenir, müşterimizle birlikte tüm zemin ve kapı altı geçişleri kontrol edilerek garantili teslim edilir."
+      }
+    ],
+    priceFactors: [
+      "Metrekare Büyüklüğü: Toplam alan arttıkça m² birim işçilik fiyatı daha ekonomik hale gelir.",
+      "Mekan Durumu (Eşyalı / Boş): Eşyalı evlerde mobilyaların oda içinde kaydırılması ekstra iş gücü ve dikkat gerektirir.",
+      "Zemin Düzlüğü ve Altyapı: Eski halıfleks veya parke sökümü, şap tamiri ve zemin tesviye ihtiyacı süreyi ve işçiliği etkiler.",
+      "Süpürgelik Türü ve Yüksekliği: Standart plastik süpürgelik ile 8-10 cm beyaz lake MDF süpürgelik montaj işçiliği farklıdır.",
+      "Kat ve Asansör Durumu: Parke ve süpürgelik paketlerinin kata taşınması operasyonel bir faktördür."
+    ],
+    neighborhoods: [
+      "Kurtköy", "Yenişehir", "Batı Mahallesi", "Kaynarca", "Çamlık", "Güzelyalı",
+      "Doğu Mahallesi", "Velibaba", "Yayalar", "Fevzi Çakmak", "Esenyalı", "Şeyhli",
+      "Kavakpınar", "Harmandere", "Sapanbağları", "Bahçelievler", "Yeşilbağlar", "Dumlupınar"
     ],
     faqs: [
       {
-        question: "Kurtköy tarafındaki sitelere servisiniz var mı?",
-        answer: "Evet, Pendik Kurtköy ve Yenişehir bölgesindeki tüm site ve villalara düzenli montaj hizmeti veriyoruz."
+        question: "Pendik'te laminat parke döşeme işlemi ne kadar sürer?",
+        answer: "Pendik bölgesindeki ortalama 80-120 m² standart boş bir dairenin laminat parke döşeme ve süpürgelik montajını profesyonel ekibimizle 1 iş günü içerisinde eksiksiz tamamlayıp teslim ediyoruz."
+      },
+      {
+        question: "Kurtköy, Yenişehir ve diğer Pendik mahallelerine keşif hizmetiniz ücretli mi?",
+        answer: "Hayır, Pendik'in tüm mahallelerinde yerinde keşif hizmetimiz tamamen ücretsizdir. Numunelerimizle gelerek alanınızı ölçüyor, zemininizi inceliyor ve kesin fiyat teklifimizi sunuyoruz."
+      },
+      {
+        question: "Pendik'te eşyalı evlerde parke değişimi yapıyor musunuz?",
+        answer: "Evet, Pendik genelinde eşyalı dairelerde de parke yenileme yapıyoruz. Odadaki mobilyaları dikkatle kaydırarak zemini yeniliyor ve işlemi tamamladıktan sonra eşyaları yerine yerleştiriyoruz."
+      },
+      {
+        question: "Kabaran veya gıcırdayan parkeler için komple değişim şart mı, tamir yapılır mı?",
+        answer: "Genellikle komple değişime gerek kalmaz. Kabarma çoğunlukla duvar kenarlarında genleşme payı bırakılmamasından kaynaklanır. Kenar dilatasyon payını açarak ve hasarlı kilitli parçaları lokal olarak değiştirerek parkenizi kurtarıyoruz."
+      },
+      {
+        question: "Pendik parke döşeme işçilik fiyatları nasıl belirlenir?",
+        answer: "Fiyatlar döşenecek alanın net metrekaresine, evin eşyalı olup olmamasına, eski parke söküm ihtiyacına ve seçilen süpürgelik tipine göre belirlenir. Net maliyet için keşif talep edebilir veya sitemizdeki hesaplama modülünü kullanabilirsiniz."
       }
     ]
   },

@@ -270,7 +270,7 @@ export function Contact({ initialDistrict = "" }: ContactProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        WhatsApp'tan Anında Onay Al <ArrowRight className="w-5 h-5" />
+                        WhatsApp&apos;tan Anında Onay Al <ArrowRight className="w-5 h-5" />
                       </a>
                     </Button>
 

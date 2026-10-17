@@ -17,12 +17,14 @@ export function Footer() {
 
           {/* Hızlı Linkler */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Hızlı Linkler</h4>
+            <h4 className="text-lg font-semibold text-white">Hizmetlerimiz</h4>
             <ul className="space-y-2 text-sm text-background/80">
-              <li><Link href="#hizmetler" className="hover:text-primary transition-colors">Hizmetlerimiz</Link></li>
-              <li><Link href="#hesaplama" className="hover:text-primary transition-colors">Fiyat Hesaplama</Link></li>
-              <li><Link href="#galeri" className="hover:text-primary transition-colors">Referanslar</Link></li>
-              <li><Link href="#sss" className="hover:text-primary transition-colors">Sık Sorulan Sorular</Link></li>
+              <li><Link href="/hizmetler/laminat-parke-doseme" className="hover:text-primary transition-colors">Laminat Parke Döşeme</Link></li>
+              <li><Link href="/hizmetler/supurgelik-montaji" className="hover:text-primary transition-colors">Süpürgelik Montajı</Link></li>
+              <li><Link href="/hizmetler/parke-tamiri" className="hover:text-primary transition-colors">Parke Tamiri ve Bakımı</Link></li>
+              <li><Link href="/parke-doseme-fiyatlari" className="hover:text-primary transition-colors">2026 İşçilik Fiyatları</Link></li>
+              <li><Link href="/#hesaplama" className="hover:text-primary transition-colors">Fiyat Hesaplama Aracı</Link></li>
+              <li><Link href="/#sss" className="hover:text-primary transition-colors">Sık Sorulan Sorular</Link></li>
             </ul>
           </div>
 
@@ -32,7 +34,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-background/80">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span>İstanbul, Anadolu Yakası, Gebze, Kocaeli</span>
+                <span>İstanbul Anadolu Yakası, Gebze & Tüm İstanbul</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
@@ -51,7 +53,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-background/80">
               <li className="flex items-center space-x-3">
                 <Clock className="w-5 h-5 text-primary shrink-0" />
-                <span>7 Gün 24 Saat Hizmetinizdeyiz</span>
+                <span>Haftanın 7 Günü: 08:00 - 21:00</span>
               </li>
             </ul>
           </div>
@@ -59,18 +61,22 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-background/10">
           <div className="mb-8">
-            <h4 className="text-sm font-semibold text-white mb-4">Popüler Hizmet Bölgelerimiz</h4>
+            <h4 className="text-sm font-semibold text-white mb-4">Öncelikli Hizmet Bölgelerimiz (Anadolu Yakası & Çevresi)</h4>
             <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-background/60">
-              <Link href="/istanbul/pendik" className="hover:text-primary transition-colors">Pendik Parke Ustası</Link>
-              <Link href="/istanbul/kadikoy" className="hover:text-primary transition-colors">Kadıköy Parke Ustası</Link>
+              <Link href="/istanbul/pendik" className="hover:text-primary transition-colors font-medium text-white/90">Pendik Parke Ustası</Link>
               <Link href="/istanbul/kartal" className="hover:text-primary transition-colors">Kartal Parke Ustası</Link>
               <Link href="/istanbul/maltepe" className="hover:text-primary transition-colors">Maltepe Parke Ustası</Link>
+              <Link href="/istanbul/tuzla" className="hover:text-primary transition-colors">Tuzla Parke Ustası</Link>
+              <Link href="/istanbul/kadikoy" className="hover:text-primary transition-colors">Kadıköy Parke Ustası</Link>
+              <Link href="/istanbul/umraniye" className="hover:text-primary transition-colors">Ümraniye Parke Ustası</Link>
               <Link href="/istanbul/atasehir" className="hover:text-primary transition-colors">Ataşehir Parke Ustası</Link>
+              <Link href="/istanbul/sancaktepe" className="hover:text-primary transition-colors">Sancaktepe Parke Ustası</Link>
+              <Link href="/istanbul/sultanbeyli" className="hover:text-primary transition-colors">Sultanbeyli Parke Ustası</Link>
+              <Link href="/istanbul/cekmekoy" className="hover:text-primary transition-colors">Çekmeköy Parke Ustası</Link>
               <Link href="/istanbul/uskudar" className="hover:text-primary transition-colors">Üsküdar Parke Ustası</Link>
-              <Link href="/istanbul/besiktas" className="hover:text-primary transition-colors">Beşiktaş Parke Ustası</Link>
-              <Link href="/istanbul/sisli" className="hover:text-primary transition-colors">Şişli Parke Ustası</Link>
               <Link href="/kocaeli/gebze" className="hover:text-primary transition-colors">Gebze Parke Ustası</Link>
-              <Link href="/kocaeli/izmit" className="hover:text-primary transition-colors">İzmit Parke Ustası</Link>
+              <Link href="/kocaeli/darica" className="hover:text-primary transition-colors">Darıca Parke Ustası</Link>
+              <Link href="/kocaeli/cayirova" className="hover:text-primary transition-colors">Çayırova Parke Ustası</Link>
             </div>
           </div>
           <div className="text-center text-sm text-background/60">

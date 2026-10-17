@@ -50,7 +50,7 @@ export function Hero({
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-primary font-medium text-sm">
               <Star className="w-4 h-4 fill-primary" />
-              <span>Google'da 5 Yıldızlı Hizmet</span>
+              <span>Google&apos;da 5 Yıldızlı Hizmet</span>
             </div>
             
             {customH1 ? (

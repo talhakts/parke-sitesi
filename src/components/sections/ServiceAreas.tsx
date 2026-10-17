@@ -27,7 +27,7 @@ export function ServiceAreas() {
               Hizmet <span className="text-primary">Bölgelerimiz</span>
             </h2>
             <p className="text-lg text-foreground/70 max-w-lg">
-              İstanbul'un tüm ilçelerinde (Anadolu ve Avrupa Yakası) ve Kocaeli bölgelerinde profesyonel parke döşeme hizmeti sunuyoruz.
+              İstanbul&apos;un tüm ilçelerinde (Anadolu ve Avrupa Yakası) ve Kocaeli bölgelerinde profesyonel parke döşeme hizmeti sunuyoruz.
             </p>
             
             <div className="space-y-6 pt-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
@@ -77,6 +77,7 @@ export function ServiceAreas() {
           >
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192697.79327429115!2d29.04071375!3d40.9825555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac790b17ba8ad%3A0xd2d24ea0437a7ee2!2sAnadolu%20Yakas%C4%B1%2C%20%C4%B0stanbul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+              title="Parke Ustam İstanbul ve Kocaeli Hizmet Bölgesi Haritası"
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

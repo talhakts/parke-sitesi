@@ -19,11 +19,13 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { name: 'Hizmetler', href: '#hizmetler' },
-    { name: 'Fiyat Hesaplama', href: '#hesaplama' },
-    { name: 'Galeri', href: '#galeri' },
-    { name: 'Yorumlar', href: '#yorumlar' },
-    { name: 'İletişim', href: '#iletisim' },
+    { name: 'Hizmetlerimiz', href: '/#hizmetler' },
+    { name: 'Laminat Parke', href: '/hizmetler/laminat-parke-doseme' },
+    { name: 'Süpürgelik', href: '/hizmetler/supurgelik-montaji' },
+    { name: 'Parke Tamiri', href: '/hizmetler/parke-tamiri' },
+    { name: 'Fiyat Rehberi', href: '/parke-doseme-fiyatlari' },
+    { name: 'Pendik Ustası', href: '/istanbul/pendik' },
+    { name: 'İletişim', href: '/#iletisim' },
   ]
 
   return (

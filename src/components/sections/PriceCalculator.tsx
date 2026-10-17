@@ -29,12 +29,12 @@ import {
 import { Card } from '@/components/ui/card'
 
 const formSchema = z.object({
-  m2: z.coerce.number().min(1, "En az 1 m² girmelisiniz").max(1000, "Çok yüksek bir değer girdiniz"),
+  m2: z.number().min(1, "En az 1 m² girmelisiniz").max(1000, "Çok yüksek bir değer girdiniz"),
   evDurumu: z.enum(["bos", "esyali"]),
   kat: z.string(),
-  asansor: z.boolean().default(false),
-  eskiParke: z.boolean().default(false),
-  supurgelik: z.boolean().default(false),
+  asansor: z.boolean(),
+  eskiParke: z.boolean(),
+  supurgelik: z.boolean(),
   il: z.string().min(2, "İl giriniz"),
   ilce: z.string().min(2, "İlçe giriniz"),
 })
@@ -43,7 +43,7 @@ export function PriceCalculator() {
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null)
 
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema) as any,
+    resolver: zodResolver(formSchema),
     defaultValues: {
       m2: 0,
       evDurumu: "bos",
@@ -88,6 +88,16 @@ export function PriceCalculator() {
     setEstimatedPrice(Math.round(price))
   }
 
+  const currentValues = form.getValues();
+  const whatsappCalcMessage = encodeURIComponent(
+    `Merhaba Parke Ustam, web sitenizdeki fiyat hesaplama aracı ile tahmini hesaplama yaptım:\n` +
+    `• Alan: ${currentValues.m2 || 0} m²\n` +
+    `• Durum: ${currentValues.evDurumu === 'esyali' ? 'Eşyalı' : 'Boş'} Ev\n` +
+    `• Konum: ${currentValues.ilce ? currentValues.ilce + ', ' : ''}${currentValues.il}\n` +
+    `• Tahmini İşçilik: ~${estimatedPrice?.toLocaleString('tr-TR')} TL\n\n` +
+    `Ücretsiz yerinde keşif ve kesin fiyat teklifi almak istiyorum.`
+  );
+
   return (
     <section id="hesaplama" className="py-20 relative overflow-hidden">
       {/* Decorative Background */}
@@ -128,15 +138,15 @@ export function PriceCalculator() {
                 </div>
                 <p className="text-xs text-foreground/50 mt-4">* Sadece işçilik bedelidir. Malzeme dahil değildir. Net fiyat keşif sonrası verilir.</p>
                 
-                <div className="flex gap-4 mt-6">
-                  <Button className="w-full gap-2" asChild>
-                    <a href="tel:+905555555555">
-                      <Phone className="w-4 h-4" /> Ara
+                <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                  <Button className="w-full gap-2 rounded-xl h-12" asChild>
+                    <a href="tel:+905355067130">
+                      <Phone className="w-4 h-4" /> Ustayı Ara: 0535 506 71 30
                     </a>
                   </Button>
-                  <Button variant="outline" className="w-full gap-2 border-primary/30 text-primary hover:bg-primary hover:text-white" asChild>
-                    <a href="https://wa.me/905555555555" target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-4 h-4" /> WhatsApp
+                  <Button variant="outline" className="w-full gap-2 rounded-xl h-12 border-primary/30 text-primary hover:bg-primary hover:text-white" asChild>
+                    <a href={`https://wa.me/905355067130?text=${whatsappCalcMessage}`} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-4 h-4" /> WhatsApp&apos;tan Teklif İste
                     </a>
                   </Button>
                 </div>
@@ -161,7 +171,12 @@ export function PriceCalculator() {
                         <FormItem>
                           <FormLabel>Alan (m²)</FormLabel>
                           <FormControl>
-                            <Input type="number" placeholder="Örn: 50" {...field} />
+                            <Input
+                              type="number"
+                              placeholder="Örn: 50"
+                              value={field.value ? field.value : ''}
+                              onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

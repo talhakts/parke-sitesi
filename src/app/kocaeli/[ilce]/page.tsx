@@ -11,6 +11,7 @@ import { Gallery } from '@/components/sections/Gallery';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
 import { DistrictContent } from '@/components/sections/DistrictContent';
+import { Breadcrumb } from '@/components/layout/Breadcrumb';
 
 interface Props {
   params: Promise<{
@@ -35,12 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const districtInfo = getDistrictInfo(ilce);
-  const description = districtInfo?.intro 
+  const title = districtInfo?.metaTitle || `${district.name} Parke Ustası | Kocaeli Parke Döşeme`;
+  const description = districtInfo?.metaDescription || (districtInfo?.intro 
     ? `${districtInfo.intro.slice(0, 155)}...`
-    : `${district.name} ilçesinde profesyonel laminat parke, sistre cila ve parke döşeme hizmeti. 30 yılı aşkın tecrübemizle ücretsiz keşif için bizi arayın!`;
+    : `${district.name} ilçesinde profesyonel laminat parke, süpürgelik montajı ve parke döşeme hizmeti. 30 yılı aşkın tecrübemizle ücretsiz keşif için bizi arayın!`);
 
   return {
-    title: `${district.name} Parke Ustası | Kocaeli Parke Döşeme`,
+    title,
     description,
     keywords: [
       `${district.name} parke ustası`,
@@ -54,8 +56,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/kocaeli/${district.slug}`,
     },
     openGraph: {
-      title: `${district.name} Parke Ustası | Kocaeli Parke Döşeme`,
-      description: `${district.name} genelinde profesyonel ve garantili parke döşeme hizmeti.`,
+      title,
+      description,
       url: `https://www.parkeustam.com/kocaeli/${district.slug}`,
       siteName: "Parke Ustam",
       locale: "tr_TR",
@@ -63,8 +65,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${district.name} Parke Ustası | Kocaeli Parke Döşeme`,
-      description: `${district.name} genelinde profesyonel ve garantili parke döşeme hizmeti.`,
+      title,
+      description,
     },
   };
 }
@@ -104,52 +106,76 @@ export default async function KocaeliDistrictPage({ params }: Props) {
     ]
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HomeAndConstructionBusiness",
+        "@id": "https://www.parkeustam.com/#business",
+        "name": "Parke Ustam",
+        "url": "https://www.parkeustam.com",
+        "image": "https://www.parkeustam.com/images/hero-bg.png",
+        "telephone": "+905355067130",
+        "priceRange": "₺₺",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": district.name,
+          "addressRegion": "Kocaeli",
+          "addressCountry": "TR"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": `${district.name}, Kocaeli`
+        }
+      },
+      {
+        "@type": "Service",
+        "name": `${district.name} Parke Döşeme ve Parke Ustası Hizmeti`,
+        "provider": {
+          "@id": "https://www.parkeustam.com/#business"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": `${district.name}, Kocaeli`
+        },
+        "description": info.intro,
+        "serviceType": "Laminat Parke Döşeme, Süpürgelik Montajı, Parke Tamiri"
+      }
+    ]
+  };
+
+  const h1Heading = info.customH1Text ? (
+    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+      <span className="block">{info.customH1Text}</span>
+    </h1>
+  ) : (
+    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+      <span className="block">{district.name} Parke Ustası</span>
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent block">
+        ve Kocaeli Parke Döşeme
+      </span>
+    </h1>
+  );
+
   return (
     <div className="flex flex-col w-full">
-      {/* Schema.org LocalBusiness / Service */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HomeAndConstructionBusiness",
-            "name": `${district.name} Parke Ustası | Kocaeli Parke Döşeme - Parke Ustam`,
-            "image": "https://www.parkeustam.com/images/hero-bg.png",
-            "url": `https://www.parkeustam.com/kocaeli/${district.slug}`,
-            "telephone": "+905355067130",
-            "priceRange": "₺₺",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": district.name,
-              "addressRegion": "Kocaeli",
-              "addressCountry": "TR"
-            },
-            "areaServed": {
-              "@type": "AdministrativeArea",
-              "name": `${district.name}, Kocaeli`
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "148",
-              "bestRating": "5",
-              "worstRating": "1"
-            }
-          })
+          __html: JSON.stringify(jsonLd)
         }}
       />
 
+      <div className="pt-20 bg-background/80 border-b border-border/30">
+        <Breadcrumb items={[
+          { name: 'Kocaeli', href: '/' },
+          { name: `${district.name} Parke Ustası` }
+        ]} />
+      </div>
+
       <Hero 
         imageAlt={`${district.name} parke ustası kocaeli parke döşeme`}
-        customH1={
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-            <span className="block">{district.name} Parke Ustası</span>
-            <span className="text-2xl sm:text-3xl lg:text-4xl text-foreground/50 font-light block my-1">|</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent block">
-              Kocaeli Parke Döşeme
-            </span>
-          </h1>
-        }
+        customH1={h1Heading}
         description={info.intro}
       />
       <TrustBadges />

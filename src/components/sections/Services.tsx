@@ -1,50 +1,59 @@
 "use client"
 
 import React from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Hammer, Layers, LayoutGrid, Ruler, Trash2, Briefcase, Home, Store } from 'lucide-react'
 
 const services = [
   {
-    title: "Parke Döşeme",
-    description: "Masif ve lamine parke uygulamalarında profesyonel işçilik.",
-    icon: LayoutGrid,
-  },
-  {
-    title: "Laminat Parke",
-    description: "Hızlı, pratik ve ekonomik laminat parke döşeme çözümleri.",
+    title: "Laminat Parke Döşeme",
+    description: "Hızlı, pratik ve ekonomik derzli/derzsiz laminat parke döşeme çözümleri.",
     icon: Layers,
+    href: "/hizmetler/laminat-parke-doseme",
   },
   {
-    title: "PVC Zemin",
-    description: "Suya dayanıklı ve uzun ömürlü LVT/PVC zemin kaplamaları.",
-    icon: Hammer,
-  },
-  {
-    title: "Süpürgelik",
-    description: "Mekana uygun ahşap, plastik veya MDF süpürgelik montajı.",
+    title: "Süpürgelik Montajı",
+    description: "Mekana uygun lake, ahşap veya MDF süpürgeliklerde 45° gönye kesim işçiliği.",
     icon: Ruler,
+    href: "/hizmetler/supurgelik-montaji",
+  },
+  {
+    title: "Parke Tamiri ve Bakımı",
+    description: "Kabaran, şişen, su hasarı görmüş veya ses yapan parkelerin lokal onarımı.",
+    icon: Hammer,
+    href: "/hizmetler/parke-tamiri",
+  },
+  {
+    title: "2026 İşçilik Fiyatları",
+    description: "Şeffaf metrekare maliyetleri ve canlı fiyat hesaplama rehberi.",
+    icon: LayoutGrid,
+    href: "/parke-doseme-fiyatlari",
   },
   {
     title: "Eski Parke Sökümü",
     description: "Zemine zarar vermeden mevcut parkelerin sökülüp temizlenmesi.",
     icon: Trash2,
+    href: "/parke-doseme-fiyatlari",
   },
   {
     title: "Ofis Projeleri",
-    description: "Çalışma alanlarına özel akustik ve dayanıklı zemin çözümleri.",
+    description: "Çalışma alanlarına özel akustik ve dayanıklı ticari zemin çözümleri.",
     icon: Briefcase,
+    href: "/hizmetler/laminat-parke-doseme",
   },
   {
     title: "Villa ve Ev",
-    description: "Lüks konutlar için estetik ve premium zemin tasarımları.",
+    description: "Lüks konutlar için estetik, tok sesli ve premium zemin tasarımları.",
     icon: Home,
+    href: "/hizmetler/laminat-parke-doseme",
   },
   {
-    title: "Mağaza Zeminleri",
-    description: "Yoğun trafiğe uygun, şık ticari alan zemin kaplamaları.",
+    title: "PVC & LVT Zemin",
+    description: "Suya tam dayanıklı, yoğun trafiğe uygun estetik ticari alan kaplamaları.",
     icon: Store,
+    href: "/hizmetler/laminat-parke-doseme",
   }
 ]
 
@@ -81,19 +90,21 @@ export function Services() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
             >
-              <Card className="h-full glass border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <service.icon className="w-6 h-6" />
-                  </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm text-foreground/70">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <Link href={service.href} className="block h-full focus:outline-none focus:ring-2 focus:ring-primary rounded-2xl">
+                <Card className="h-full glass border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <service.icon className="w-6 h-6" />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-sm text-foreground/70">
+                      {service.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>

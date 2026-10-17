@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDistrictBySlug, getDistrictsByRegion } from '@/lib/districts';
-import { getDistrictInfo, districtData } from '@/lib/districtData';
+import { getDistrictInfo } from '@/lib/districtData';
 import { Hero } from '@/components/sections/Hero';
 import { TrustBadges } from '@/components/sections/TrustBadges';
 import { Services } from '@/components/sections/Services';
@@ -11,6 +11,7 @@ import { Gallery } from '@/components/sections/Gallery';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
 import { DistrictContent } from '@/components/sections/DistrictContent';
+import { Breadcrumb } from '@/components/layout/Breadcrumb';
 
 interface Props {
   params: Promise<{
@@ -37,18 +38,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const districtInfo = getDistrictInfo(ilce);
-  const description = districtInfo?.intro 
+  const title = districtInfo?.metaTitle || `${district.name} Parke Ustası | Laminat Parke ve Süpürgelik`;
+  const description = districtInfo?.metaDescription || (districtInfo?.intro 
     ? `${districtInfo.intro.slice(0, 155)}...`
-    : `${district.name} parke ustası arayanlar için 30 yılı aşkın tecrübemizle garantili laminat parke, sistre cila ve parke döşeme hizmeti sunuyoruz. Ücretsiz keşif için hemen arayın!`;
+    : `${district.name}'de laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. 30 yılı aşkın tecrübemizle ücretsiz keşif ve uygun fiyatlar için arayın!`);
 
   return {
-    title: `${district.name} Parke Ustası | İstanbul Parke Döşeme`,
+    title,
     description,
     keywords: [
       `${district.name} parke ustası`,
       `${district.name} parke döşeme`,
       `${district.name} laminat parke`,
-      `${district.name} parke`,
+      `${district.name} süpürgelik montajı`,
+      `${district.name} parke tamiri`,
       "istanbul parke ustası",
       "istanbul parke döşeme"
     ],
@@ -56,8 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/istanbul/${district.slug}`,
     },
     openGraph: {
-      title: `${district.name} Parke Ustası | İstanbul Parke Döşeme`,
-      description: `${district.name} genelinde profesyonel ve garantili parke döşeme hizmeti.`,
+      title,
+      description,
       url: `https://www.parkeustam.com/istanbul/${district.slug}`,
       siteName: "Parke Ustam",
       locale: "tr_TR",
@@ -65,8 +68,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${district.name} Parke Ustası | İstanbul Parke Döşeme`,
-      description: `${district.name} genelinde profesyonel ve garantili parke döşeme hizmeti.`,
+      title,
+      description,
     },
   };
 }
@@ -107,52 +110,70 @@ export default async function DistrictPage({ params }: Props) {
     ]
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HomeAndConstructionBusiness",
+        "@id": "https://www.parkeustam.com/#business",
+        "name": "Parke Ustam",
+        "url": "https://www.parkeustam.com",
+        "image": "https://www.parkeustam.com/images/hero-bg.png",
+        "telephone": "+905355067130",
+        "priceRange": "₺₺",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": `${district.name}, İstanbul`
+        }
+      },
+      {
+        "@type": "Service",
+        "name": `${district.name} Parke Döşeme ve Parke Ustası Hizmeti`,
+        "provider": {
+          "@id": "https://www.parkeustam.com/#business"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": `${district.name}, İstanbul`
+        },
+        "description": info.intro,
+        "serviceType": "Laminat Parke Döşeme, Süpürgelik Montajı, Parke Tamiri"
+      }
+    ]
+  };
+
+  const h1Heading = info.customH1Text ? (
+    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+      <span className="block">{info.customH1Text}</span>
+    </h1>
+  ) : (
+    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+      <span className="block">{district.name} Parke Ustası</span>
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent block">
+        ve Laminat Parke Döşeme
+      </span>
+    </h1>
+  );
+
   return (
     <div className="flex flex-col w-full">
-      {/* Schema.org LocalBusiness / Service */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HomeAndConstructionBusiness",
-            "name": `${district.name} Parke Ustası | İstanbul Parke Döşeme - Parke Ustam`,
-            "image": "https://www.parkeustam.com/images/hero-bg.png",
-            "url": `https://www.parkeustam.com/istanbul/${district.slug}`,
-            "telephone": "+905355067130",
-            "priceRange": "₺₺",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": district.name,
-              "addressRegion": "İstanbul",
-              "addressCountry": "TR"
-            },
-            "areaServed": {
-              "@type": "AdministrativeArea",
-              "name": `${district.name}, İstanbul`
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "148",
-              "bestRating": "5",
-              "worstRating": "1"
-            }
-          })
+          __html: JSON.stringify(jsonLd)
         }}
       />
 
+      <div className="pt-20 bg-background/80 border-b border-border/30">
+        <Breadcrumb items={[
+          { name: 'İstanbul', href: '/' },
+          { name: `${district.name} Parke Ustası` }
+        ]} />
+      </div>
+
       <Hero 
         imageAlt={`${district.name} parke ustası laminat parke döşeme istanbul`}
-        customH1={
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-            <span className="block">{district.name} Parke Ustası</span>
-            <span className="text-2xl sm:text-3xl lg:text-4xl text-foreground/50 font-light block my-1">|</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent block">
-              İstanbul Parke Döşeme
-            </span>
-          </h1>
-        }
+        customH1={h1Heading}
         description={info.intro}
       />
       <TrustBadges />
