@@ -1,38 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { StickyMobileBar } from "@/components/layout/StickyMobileBar";
+import { CookieConsent } from "@/components/layout/CookieConsent";
+import { siteConfig } from "@/config/site.config";
 import { districts } from "@/lib/districts";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.parkeustam.com"),
+  metadataBase: new URL(siteConfig.url),
   title: "İstanbul Parke Ustası | Laminat Parke Döşeme – Parke Ustam",
   description: "İstanbul Anadolu Yakası başta olmak üzere tüm İstanbul ve Kocaeli bölgesinde uzman laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. Ücretsiz keşif için arayın.",
-  keywords: [
-    "istanbul parke ustası",
-    "parke ustası",
-    "parke döşeme",
-    "laminat parke döşeme",
-    "anadolu yakası parke ustası",
-    "pendik parke ustası",
-    "kartal parke ustası",
-    "kadıköy parke ustası",
-    "süpürgelik montajı",
-    "parke tamiri",
-    "Parke Ustam"
-  ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "İstanbul Parke Ustası | Laminat Parke Döşeme – Parke Ustam",
     description: "İstanbul genelinde ve Anadolu Yakası'nda uzman işçilikle profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
-    url: "https://www.parkeustam.com",
-    siteName: "Parke Ustam",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: "tr_TR",
     type: "website",
   },
@@ -64,39 +51,31 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "HomeAndConstructionBusiness",
-        "@id": "https://www.parkeustam.com/#business",
-        "name": "Parke Ustam",
-        "url": "https://www.parkeustam.com",
-        "image": "https://www.parkeustam.com/images/hero-bg.png",
-        "telephone": "+905355067130",
-        "email": "info@parkeustam.com",
+        "@id": `${siteConfig.url}/#business`,
+        "name": siteConfig.name,
+        "url": siteConfig.url,
+        "image": `${siteConfig.url}/images/hero-bg.webp`,
+        "telephone": siteConfig.phoneRaw,
+        "email": siteConfig.email,
         "priceRange": "₺₺",
         "areaServed": allAreas.slice(0, 25),
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-              "Sunday"
-            ],
-            "opens": "08:00",
-            "closes": "21:00"
+            "dayOfWeek": siteConfig.openingHoursSchema.days,
+            "opens": siteConfig.openingHoursSchema.opens,
+            "closes": siteConfig.openingHoursSchema.closes
           }
         ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://www.parkeustam.com/#website",
-        "url": "https://www.parkeustam.com",
-        "name": "Parke Ustam",
+        "@id": `${siteConfig.url}/#website`,
+        "url": siteConfig.url,
+        "name": siteConfig.name,
         "description": "İstanbul parke ustası ve profesyonel parke döşeme hizmetleri",
         "publisher": {
-          "@id": "https://www.parkeustam.com/#business"
+          "@id": `${siteConfig.url}/#business`
         },
         "inLanguage": "tr-TR"
       }
@@ -113,7 +92,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans antialiased text-foreground bg-background">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -122,15 +101,15 @@ export default function RootLayout({
         >
           <div className="flex flex-col min-h-screen">
             <Navbar />
-            <main className="flex-1">
+            <main className="flex-1 pb-16 md:pb-0">
               {children}
             </main>
             <Footer />
+            <StickyMobileBar />
+            <CookieConsent />
           </div>
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
-

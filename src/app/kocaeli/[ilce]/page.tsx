@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDistrictBySlug, getDistrictsByRegion } from '@/lib/districts';
-import { getDistrictInfo } from '@/lib/districtData';
+import { getDistrictInfo, isDistrictIndexable, DistrictInfo } from '@/lib/districtData';
 import { Hero } from '@/components/sections/Hero';
 import { TrustBadges } from '@/components/sections/TrustBadges';
 import { Services } from '@/components/sections/Services';
@@ -35,23 +35,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const districtInfo = getDistrictInfo(ilce);
-  const title = districtInfo?.metaTitle || `${district.name} Parke Ustası | Kocaeli Parke Döşeme`;
-  const description = districtInfo?.metaDescription || (districtInfo?.intro 
-    ? `${districtInfo.intro.slice(0, 155)}...`
-    : `${district.name} ilçesinde profesyonel laminat parke, süpürgelik montajı ve parke döşeme hizmeti. Uzman işçilik ve ücretsiz keşif için bizi arayın!`);
+  const title = `${district.name} Parke Ustası | Laminat Parke & Süpürgelik`;
+  const description = `${district.name} genelinde laminat parke döşeme, süpürgelik montajı ve zemin tamiri. Usta işçiliği, şeffaf fiyatlar ve yerinde ücretsiz keşif için hemen arayın.`;
+  const isIndexable = isDistrictIndexable(district.slug);
 
   return {
     title,
     description,
-    keywords: [
-      `${district.name} parke ustası`,
-      `${district.name} parke döşeme`,
-      `${district.name} laminat parke`,
-      `${district.name} parke`,
-      "kocaeli parke ustası",
-      "kocaeli parke döşeme"
-    ],
+    robots: {
+      index: isIndexable,
+      follow: true,
+    },
     alternates: {
       canonical: `/kocaeli/${district.slug}`,
     },
@@ -79,10 +73,12 @@ export default async function KocaeliDistrictPage({ params }: Props) {
     notFound();
   }
 
-  const info = getDistrictInfo(ilce) || {
+  const fallbackInfo: DistrictInfo = {
     slug: district.slug,
     name: district.name,
     region: district.region,
+    indexable: false,
+    verified: false,
     intro: `${district.name} genelinde sanayi, ticaret ve konut projelerinde uzman ekibimizle kaliteli laminat parke ve süpürgelik montajı sunuyoruz. Yerel usta kadromuzla ücretsiz keşif desteği sağlıyoruz.`,
     neighbors: [
       { name: "Gebze", slug: "gebze", region: "kocaeli" as const },
@@ -106,6 +102,8 @@ export default async function KocaeliDistrictPage({ params }: Props) {
     ]
   };
 
+  const info = getDistrictInfo(ilce) || fallbackInfo;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -114,15 +112,9 @@ export default async function KocaeliDistrictPage({ params }: Props) {
         "@id": "https://www.parkeustam.com/#business",
         "name": "Parke Ustam",
         "url": "https://www.parkeustam.com",
-        "image": "https://www.parkeustam.com/images/hero-bg.png",
+        "image": "https://www.parkeustam.com/images/hero-bg.webp",
         "telephone": "+905355067130",
         "priceRange": "₺₺",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": district.name,
-          "addressRegion": "Kocaeli",
-          "addressCountry": "TR"
-        },
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": `${district.name}, Kocaeli`

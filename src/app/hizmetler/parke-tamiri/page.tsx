@@ -17,16 +17,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Parke Tamiri ve Onarımı | İstanbul Parke Ustam",
-  description: "Kabaran, şişen, gıcırdayan ve su hasarı görmüş laminat ve lamine parkelerin tamiri. Komple değiştirmeden lokal panel değişimi ve dilatasyon boşluğu açma.",
-  keywords: [
-    "parke tamiri",
-    "kabaran parke tamiri",
-    "parke tamiri istanbul",
-    "pendik parke tamiri",
-    "su almış parke onarımı",
-    "gıcırdayan parke tamiri",
-    "parke değişimi"
-  ],
+  description: "Kabaran, şişen, gıcırdayan laminat ve lamine parke tamiri. Komple değiştirmeden lokal panel değişimi ve dilatasyon payı onarımı. Ücretsiz keşif fırsatı.",
   alternates: {
     canonical: "/hizmetler/parke-tamiri",
   },
@@ -37,6 +28,11 @@ export const metadata: Metadata = {
     siteName: "Parke Ustam",
     locale: "tr_TR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Parke Tamiri ve Onarımı | İstanbul Parke Ustam",
+    description: "Kabaran ve hasar gören parkelerinizi komple yenilemeden tasarruflu lokal tamir çözümleri.",
   },
 };
 

@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Phone, ArrowRight, ShieldCheck, Ruler } from 'lucide-react'
+import { siteConfig } from '@/config/site.config'
+import { trackPhoneCall, trackWhatsAppClick } from '@/lib/analytics'
 
 interface HeroProps {
   title?: string;
@@ -19,21 +21,26 @@ export function Hero({
   title = "İstanbul", 
   highlight = "Parke Döşeme", 
   subtitle = "ve Parke Ustası Hizmeti",
-  description = "İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde uzman usta işçiliği ile laminat parke döşeme, süpürgelik montajı ve zemin tamiri çözümleri. Yaşam alanlarınızı estetik ve dayanıklı zeminlerle yenileyin.",
+  description = "İstanbul Anadolu Yakası, Gebze ve tüm İstanbul genelinde uzman usta işçiliği ile laminat parke döşeme, süpürgelik montajı ve zemin tamiri çözümleri. Lazer metre ile yerinde ücretsiz keşif fırsatı.",
   imageAlt = "İstanbul parke ustası profesyonel parke döşeme hizmeti",
   customH1
 }: HeroProps) {
+  const whatsappUrl = `https://wa.me/${siteConfig.whatsappRaw}?text=${encodeURIComponent(
+    'Merhaba Parke Ustam, laminat parke döşeme ve süpürgelik işçiliği hakkında keşif ve teklif almak istiyorum.'
+  )}`;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/images/hero-bg.png" 
+          src="/images/hero-bg.webp" 
           alt={imageAlt} 
           fill 
           priority
+          fetchPriority="high"
           className="object-cover object-center"
-          sizes="100vw"
+          sizes="(max-width: 1200px) 100vw, 1920px"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent z-10" />
       </div>
@@ -70,14 +77,25 @@ export function Hero({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="rounded-full h-14 px-8 text-lg gap-2 shadow-lg shadow-primary/20 hover:scale-105 transition-transform" asChild>
-                <a href="tel:+905355067130">
+              <Button 
+                size="lg" 
+                className="rounded-full h-14 px-8 text-lg gap-2 shadow-lg shadow-primary/20 hover:scale-105 transition-transform" 
+                asChild
+                onClick={() => trackPhoneCall('hero')}
+              >
+                <a href={`tel:${siteConfig.phoneRaw}`}>
                   <Phone className="w-5 h-5" />
                   Hemen Ara
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full h-14 px-8 text-lg gap-2 glass border-primary/30 hover:bg-primary/10 hover:scale-105 transition-transform" asChild>
-                <a href="https://wa.me/905355067130" target="_blank" rel="noopener noreferrer">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="rounded-full h-14 px-8 text-lg gap-2 glass border-primary/30 hover:bg-primary/10 hover:scale-105 transition-transform" 
+                asChild
+                onClick={() => trackWhatsAppClick('hero')}
+              >
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   WhatsApp Danışma
                   <ArrowRight className="w-5 h-5" />
                 </a>
@@ -100,7 +118,9 @@ export function Hero({
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground">Ücretsiz Keşif Fırsatı</h3>
-              <p className="text-foreground/70">Evinize veya iş yerinize gelip alanınızı lazer metreyle ölçüyor ve şeffaf işçilik teklifinizi hazırlıyoruz.</p>
+              <p className="text-foreground/70">
+                Evinize veya iş yerinize gelip alanınızı lazer metreyle ölçüyor, zemin düzlüğünü inceliyor ve şeffaf işçilik teklifinizi hazırlıyoruz.
+              </p>
               <Button size="lg" className="w-full rounded-full h-14 text-lg" asChild>
                  <a href="#hesaplama">Tahmini Fiyat Hesapla</a>
               </Button>

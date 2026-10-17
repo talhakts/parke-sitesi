@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDistrictBySlug, getDistrictsByRegion } from '@/lib/districts';
-import { getDistrictInfo } from '@/lib/districtData';
+import { getDistrictInfo, isDistrictIndexable, DistrictInfo } from '@/lib/districtData';
 import { Hero } from '@/components/sections/Hero';
 import { TrustBadges } from '@/components/sections/TrustBadges';
 import { Services } from '@/components/sections/Services';
@@ -37,24 +37,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const districtInfo = getDistrictInfo(ilce);
-  const title = districtInfo?.metaTitle || `${district.name} Parke Ustası | Laminat Parke ve Süpürgelik`;
-  const description = districtInfo?.metaDescription || (districtInfo?.intro 
-    ? `${districtInfo.intro.slice(0, 155)}...`
-    : `${district.name}'de laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. Uzman işçilik, şeffaf fiyatlar ve ücretsiz keşif için arayın!`);
+  const title = `${district.name} Parke Ustası | Laminat Parke & Süpürgelik`;
+  const description = `${district.name} genelinde laminat parke döşeme, süpürgelik montajı ve zemin tamiri. Usta işçiliği, şeffaf fiyatlar ve yerinde ücretsiz keşif için hemen arayın.`;
+
+  const isIndexable = isDistrictIndexable(district.slug);
 
   return {
     title,
     description,
-    keywords: [
-      `${district.name} parke ustası`,
-      `${district.name} parke döşeme`,
-      `${district.name} laminat parke`,
-      `${district.name} süpürgelik montajı`,
-      `${district.name} parke tamiri`,
-      "istanbul parke ustası",
-      "istanbul parke döşeme"
-    ],
+    robots: {
+      index: isIndexable,
+      follow: true,
+    },
     alternates: {
       canonical: `/istanbul/${district.slug}`,
     },
@@ -83,10 +77,12 @@ export default async function DistrictPage({ params }: Props) {
   }
 
   // İlçe özel veri objesi (varsayılan fallback ile)
-  const info = getDistrictInfo(ilce) || {
+  const fallbackInfo: DistrictInfo = {
     slug: district.slug,
     name: district.name,
     region: district.region,
+    indexable: false,
+    verified: false,
     intro: `${district.name} ilçesinde konut, ofis ve villa projelerinde yüksek kaliteli laminat parke, süpürgelik montajı ve zemin tamiri hizmeti veriyoruz. Doğal ahşap dokusunu yaşam alanlarınıza taşıyarak uzun yıllar dayanıklı, estetik zeminler oluşturuyoruz.`,
     neighbors: [
       { name: "Kadıköy", slug: "kadikoy", region: "istanbul" as const },
@@ -110,6 +106,8 @@ export default async function DistrictPage({ params }: Props) {
     ]
   };
 
+  const info = getDistrictInfo(ilce) || fallbackInfo;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -118,7 +116,7 @@ export default async function DistrictPage({ params }: Props) {
         "@id": "https://www.parkeustam.com/#business",
         "name": "Parke Ustam",
         "url": "https://www.parkeustam.com",
-        "image": "https://www.parkeustam.com/images/hero-bg.png",
+        "image": "https://www.parkeustam.com/images/hero-bg.webp",
         "telephone": "+905355067130",
         "priceRange": "₺₺",
         "areaServed": {

@@ -17,25 +17,22 @@ import {
 
 export const metadata: Metadata = {
   title: "Laminat Parke Döşeme Ustası | İstanbul Parke Ustam",
-  description: "İstanbul genelinde 8mm, 10mm ve 12mm derzli/derzsiz laminat parke döşeme. Doğru genleşme payı, nem bariyerli şilte serimi ve özenli usta işçiliği.",
-  keywords: [
-    "laminat parke döşeme",
-    "laminat parke ustası",
-    "istanbul laminat parke",
-    "pendik laminat parke ustası",
-    "derzli laminat parke",
-    "parke montajı"
-  ],
+  description: "İstanbul genelinde 8mm, 10mm, 12mm derzli laminat parke döşeme. Doğru genleşme payı, nem bariyerli şilte serimi ve usta işçiliği. Ücretsiz keşif için arayın.",
   alternates: {
     canonical: "/hizmetler/laminat-parke-doseme",
   },
   openGraph: {
     title: "Laminat Parke Döşeme Ustası | İstanbul Parke Ustam",
-    description: "İstanbul genelinde profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
+    description: "İstanbul genelinde profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri. Lazer metre ile yerinde ücretsiz keşif.",
     url: "https://www.parkeustam.com/hizmetler/laminat-parke-doseme",
     siteName: "Parke Ustam",
     locale: "tr_TR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Laminat Parke Döşeme Ustası | İstanbul Parke Ustam",
+    description: "İstanbul genelinde profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
   },
 };
 

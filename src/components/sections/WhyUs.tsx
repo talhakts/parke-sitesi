@@ -31,7 +31,7 @@ export function WhyUs() {
                 Neden Bizi <span className="text-primary">Seçmelisiniz?</span>
               </h2>
               <p className="text-lg text-foreground/70">
-                Sadece zemin döşemiyoruz, yaşam alanlarınıza değer katıyoruz. Bizi tercih eden yüzlerce mutlu müşterimiz yanılıyor olamaz.
+                Sadece zemin döşemiyoruz, yaşam alanlarınıza değer katıyoruz. Her projede titiz usta işçiliği, şeffaf keşif ve uzun ömürlü zemin garantisiyle çalışıyoruz.
               </p>
             </div>
 
@@ -61,10 +61,11 @@ export function WhyUs() {
             {/* Dekoratif Gradient */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-accent/30 mix-blend-overlay z-10" />
             <Image 
-              src="/images/service-laminate.png" 
+              src="/images/service-laminate.webp" 
               alt="İstanbul parke döşeme ustası laminat ve lamine parke montajı" 
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover"
             />
           </motion.div>

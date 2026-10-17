@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import { Calculator, Phone, MessageCircle } from 'lucide-react'
+import { Calculator, Phone, MessageCircle, AlertCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -27,6 +27,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Card } from '@/components/ui/card'
+import { siteConfig } from '@/config/site.config'
+import { trackCalculatorUsage, trackPhoneCall, trackWhatsAppClick } from '@/lib/analytics'
+import { calculateEstimate, hasPricingData } from '@/data/pricing'
 
 const formSchema = z.object({
   m2: z.number().min(1, "En az 1 m² girmelisiniz").max(1000, "Çok yüksek bir değer girdiniz"),
@@ -40,7 +43,11 @@ const formSchema = z.object({
 })
 
 export function PriceCalculator() {
-  const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null)
+  const [estimateResult, setEstimateResult] = useState<{
+    minTotal: number;
+    maxTotal: number;
+  } | null>(null)
+  const [hasCalculated, setHasCalculated] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,51 +64,34 @@ export function PriceCalculator() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const basePricePerM2 = 120 // Örnek taban işçilik fiyatı
-    let price = values.m2 * basePricePerM2
+    setHasCalculated(true)
+    const result = calculateEstimate(values)
+    setEstimateResult(result)
 
-    // Eşyalı ev çarpanı (+20%)
-    if (values.evDurumu === "esyali") {
-      price *= 1.20
+    if (result) {
+      trackCalculatorUsage(values.m2, result.minTotal)
+    } else {
+      trackCalculatorUsage(values.m2, 0)
     }
-
-    // Kat çarpanı (3. kat ve üzeri +10%)
-    if (values.kat === "3+") {
-      price *= 1.10
-    }
-
-    // Asansör yoksa (+5%)
-    if (!values.asansor && values.kat === "3+") {
-      price *= 1.05
-    }
-
-    // Eski parke sökümü (m2 başına ek 30 TL)
-    if (values.eskiParke) {
-      price += (values.m2 * 30)
-    }
-
-    // Süpürgelik montajı (m2 başına ek 20 TL)
-    if (values.supurgelik) {
-      price += (values.m2 * 20)
-    }
-
-    setEstimatedPrice(Math.round(price))
   }
 
   const currentValues = form.getValues();
+  const pricingAvailable = hasPricingData();
+
   const whatsappCalcMessage = encodeURIComponent(
-    `Merhaba Parke Ustam, web sitenizdeki fiyat hesaplama aracı ile tahmini hesaplama yaptım:\n` +
+    `Merhaba Parke Ustam, web sitenizdeki hesaplayıcı üzerinden fiyat talebi oluşturmak istiyorum:\n` +
     `• Alan: ${currentValues.m2 || 0} m²\n` +
     `• Durum: ${currentValues.evDurumu === 'esyali' ? 'Eşyalı' : 'Boş'} Ev\n` +
     `• Konum: ${currentValues.ilce ? currentValues.ilce + ', ' : ''}${currentValues.il}\n` +
-    `• Tahmini İşçilik: ~${estimatedPrice?.toLocaleString('tr-TR')} TL\n\n` +
-    `Ücretsiz yerinde keşif ve kesin fiyat teklifi almak istiyorum.`
+    `• Kat / Asansör: ${currentValues.kat}. kat / ${currentValues.asansor ? 'Asansör var' : 'Asansör yok'}\n` +
+    `• Ek İşlemler: ${currentValues.eskiParke ? 'Eski parke sökümü var, ' : ''}${currentValues.supurgelik ? 'Süpürgelik montajı var' : ''}\n\n` +
+    `Lazer metre ile yerinde ücretsiz keşif ve net işçilik teklifi rica ediyorum.`
   );
 
   return (
     <section id="hesaplama" className="py-20 relative overflow-hidden">
       {/* Decorative Background */}
-      <div className="absolute inset-0 bg-primary/5 -skew-y-3 origin-top-left z-0" />
+      <div className="absolute inset-0 bg-primary/5 -skew-y-3 origin-top-left z-0 pointer-events-none" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -118,34 +108,62 @@ export function PriceCalculator() {
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
               Tahmini İşçilik <br />
-              <span className="text-primary">Bedelini Hesaplayın</span>
+              <span className="text-primary">Maliyetini Görün</span>
             </h2>
             <p className="text-lg text-foreground/70">
-              Uygulama yapılacak alanın detaylarını girerek anında yaklaşık işçilik maliyetini görün. Unutmayın, kesin fiyat ücretsiz keşif sonrasında belirlenmektedir.
+              Uygulama yapılacak alanın detaylarını girin. Parke döşeme, süpürgelik montajı ve zemin durumuna göre net işçilik teklifinizi hazırlayalım.
             </p>
             
-            {estimatedPrice !== null && (
+            {hasCalculated && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="mt-8 p-6 glass rounded-2xl border border-primary/30 shadow-2xl relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl rounded-full" />
-                <p className="text-sm font-medium text-foreground/70 mb-2">Tahmini İşçilik Tutarı</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-extrabold text-foreground">{estimatedPrice.toLocaleString('tr-TR')}</span>
-                  <span className="text-2xl text-primary font-semibold">TL</span>
-                </div>
-                <p className="text-xs text-foreground/50 mt-4">* Sadece işçilik bedelidir. Malzeme dahil değildir. Net fiyat keşif sonrası verilir.</p>
+                
+                {pricingAvailable && estimateResult ? (
+                  <>
+                    <p className="text-sm font-medium text-foreground/70 mb-2">Tahmini İşçilik Tutarı ({currentValues.m2} m²)</p>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl sm:text-5xl font-extrabold text-foreground">
+                        {estimateResult.minTotal === estimateResult.maxTotal
+                          ? estimateResult.minTotal.toLocaleString('tr-TR')
+                          : `${estimateResult.minTotal.toLocaleString('tr-TR')} - ${estimateResult.maxTotal.toLocaleString('tr-TR')}`}
+                      </span>
+                      <span className="text-2xl text-primary font-semibold">TL</span>
+                    </div>
+                    <p className="text-xs text-foreground/50 mt-4">* Sadece işçilik bedelidir. Kesin fiyat yerinde lazer ölçümüyle verilir.</p>
+                  </>
+                ) : (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-primary font-semibold text-base">
+                      <AlertCircle className="w-5 h-5 shrink-0" />
+                      <span>{currentValues.m2} m² Alan İçin Ücretsiz Keşif Teklifi</span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
+                      Net işçilik bedeli mekanınızın mastar/şap durumu, kapı altı payları ve süpürgelik tül metresine göre netleşir. Sürpriz maliyet çıkmaması için ustamız yerinde ücretsiz keşif yapmaktadır.
+                    </p>
+                  </div>
+                )}
                 
                 <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                  <Button className="w-full gap-2 rounded-xl h-12" asChild>
-                    <a href="tel:+905355067130">
-                      <Phone className="w-4 h-4" /> Ustayı Ara: 0535 506 71 30
+                  <Button 
+                    className="w-full gap-2 rounded-xl h-12" 
+                    asChild
+                    onClick={() => trackPhoneCall('calculator_result')}
+                  >
+                    <a href={`tel:${siteConfig.phoneRaw}`}>
+                      <Phone className="w-4 h-4" /> Ustayı Ara: {siteConfig.phoneFormatted}
                     </a>
                   </Button>
-                  <Button variant="outline" className="w-full gap-2 rounded-xl h-12 border-primary/30 text-primary hover:bg-primary hover:text-white" asChild>
-                    <a href={`https://wa.me/905355067130?text=${whatsappCalcMessage}`} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    variant="outline" 
+                    className="w-full gap-2 rounded-xl h-12 border-primary/30 text-primary hover:bg-primary hover:text-white" 
+                    asChild
+                    onClick={() => trackWhatsAppClick('calculator_result')}
+                  >
+                    <a href={`https://wa.me/${siteConfig.whatsappRaw}?text=${whatsappCalcMessage}`} target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="w-4 h-4" /> WhatsApp&apos;tan Teklif İste
                     </a>
                   </Button>
@@ -188,7 +206,7 @@ export function PriceCalculator() {
                       name="kat"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Kat Sayısı</FormLabel>
+                          <FormLabel>Kat Durumu</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger>
@@ -261,7 +279,7 @@ export function PriceCalculator() {
                             <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                           </FormControl>
                           <div className="space-y-1 leading-none">
-                            <FormLabel className="cursor-pointer">Eski Parke Sökülecek</FormLabel>
+                            <FormLabel className="cursor-pointer">Eski Parke Sökümü</FormLabel>
                           </div>
                         </FormItem>
                       )}
@@ -290,7 +308,7 @@ export function PriceCalculator() {
                         <FormItem>
                           <FormLabel>İl</FormLabel>
                           <FormControl>
-                            <Input placeholder="İl" {...field} />
+                            <Input placeholder="İl (İstanbul / Kocaeli)" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -303,7 +321,7 @@ export function PriceCalculator() {
                         <FormItem>
                           <FormLabel>İlçe</FormLabel>
                           <FormControl>
-                            <Input placeholder="İlçe" {...field} />
+                            <Input placeholder="İlçe (Örn: Pendik)" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -311,8 +329,8 @@ export function PriceCalculator() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full text-lg h-12 shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
-                    Tahmini Fiyatı Hesapla
+                  <Button type="submit" size="lg" className="w-full text-base font-semibold h-12 shadow-lg shadow-primary/20 hover:scale-[1.01] transition-transform">
+                    {pricingAvailable ? "Tahmini Fiyatı Hesapla" : "Ücretsiz Keşif ve Fiyat Teklifi İste"}
                   </Button>
                 </form>
               </Form>

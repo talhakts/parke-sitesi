@@ -17,16 +17,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Süpürgelik Montajı ve Değişimi | İstanbul Parke Ustam",
-  description: "Lake, ahşap ve MDF süpürgelik montajı. 6 cm, 8 cm, 10 cm ve 12 cm süpürgeliklerde profesyonel 45° gönye köşe kesimi ve hatasız işçilik. Ücretsiz keşif için arayın.",
-  keywords: [
-    "süpürgelik montajı",
-    "süpürgelik ustası",
-    "lake süpürgelik",
-    "pendik süpürgelik montajı",
-    "pendik süpürgelik",
-    "mdf süpürgelik montajı",
-    "süpürgelik değişimi"
-  ],
+  description: "Lake, ahşap ve MDF süpürgelik montajı. 6, 8, 10 cm süpürgeliklerde profesyonel 45° gönye köşe kesimi ve hatasız işçilik. Ücretsiz keşif için arayın.",
   alternates: {
     canonical: "/hizmetler/supurgelik-montaji",
   },
@@ -37,6 +28,11 @@ export const metadata: Metadata = {
     siteName: "Parke Ustam",
     locale: "tr_TR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Süpürgelik Montajı ve Değişimi | İstanbul Parke Ustam",
+    description: "45 derecelik hassas gönye kesimleriyle kusursuz lake ve MDF süpürgelik montajı hizmeti.",
   },
 };
 

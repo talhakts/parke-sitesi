@@ -4,36 +4,26 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquareQuote, CheckCircle2 } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
+import { reviews } from '@/data/reviews'
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Ahmet Y.",
-    location: "Kadıköy, İstanbul",
-    comment: "Salonumuzun eskiyen parkelerini söküp yerine derzli laminat döşendi. Duvar diplerindeki genleşme payı ve süpürgelik birleşimleri gayet özenli yapıldı.",
-  },
-  {
-    id: 2,
-    name: "Ayşe K.",
-    location: "Pendik, İstanbul",
-    comment: "Fiyat hesaplama modülünden aldığım tahmine çok yakın bir keşif teklifi sunuldu. Süreç şeffaf ilerledi, eşyalı odamız dikkatle tamamlandı.",
-  },
-  {
-    id: 3,
-    name: "Mehmet D.",
-    location: "Üsküdar, İstanbul",
-    comment: "Lake süpürgeliklerin 45 derece köşe gönye kesimleri çok düzgün. Çıkan atıklar düzenli çuvallandı ve temiz teslim edildi.",
-  },
-  {
-    id: 4,
-    name: "Zeynep S.",
-    location: "Maltepe, İstanbul",
-    comment: "İş yerimizin yoğun trafik alanına AC5 sınıfı parke döşendi. Hafta sonu çalışma programına uyarak ticari faaliyetimizi aksatmadılar.",
-  },
-]
+interface TestimonialsProps {
+  districtName?: string;
+}
 
-export function Testimonials() {
+export function Testimonials({ districtName }: TestimonialsProps) {
   const [emblaRef] = useEmblaCarousel({ loop: true, dragFree: true })
+
+  // Eğer gerçek veri eklenmemişse bölümü gizle (Anti-fake review kuralı)
+  if (!reviews || reviews.length === 0) {
+    return null;
+  }
+
+  // İlçeye özel filtreleme veya genel yorumlar
+  const filteredReviews = districtName 
+    ? reviews.filter(r => r.district.toLowerCase() === districtName.toLowerCase())
+    : reviews;
+
+  const displayReviews = filteredReviews.length > 0 ? filteredReviews : reviews;
 
   return (
     <section id="yorumlar" className="py-20 bg-background relative overflow-hidden">
@@ -46,7 +36,7 @@ export function Testimonials() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-primary font-medium text-sm mb-4"
           >
             <CheckCircle2 className="w-4 h-4 text-primary" />
-            <span>Saha Deneyimleri</span>
+            <span>Müşteri Geri Bildirimleri</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -55,16 +45,16 @@ export function Testimonials() {
             transition={{ delay: 0.1 }}
             className="text-4xl lg:text-5xl font-bold text-foreground"
           >
-            Müşteri Deneyimleri ve <span className="text-primary">Geri Bildirimler</span>
+            Gerçek Müşteri <span className="text-primary">Deneyimleri</span>
           </motion.h2>
           <p className="text-foreground/70 max-w-2xl mx-auto mt-3 text-sm">
-            Farklı bölgelerdeki konut ve ofis parke döşeme uygulamalarımız sonrasında müşterilerimizin paylaştığı deneyimler.
+            Hizmet verdiğimiz müşterilerimizin tamamlanan zemin ve parke döşeme projeleri sonrasındaki değerlendirmeleri.
           </p>
         </div>
 
         <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
           <div className="flex gap-6 pb-8">
-            {testimonials.map((t, idx) => (
+            {displayReviews.map((t, idx) => (
               <motion.div
                 key={t.id}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -79,19 +69,14 @@ export function Testimonials() {
                     &ldquo;{t.comment}&rdquo;
                   </p>
                   <div>
-                    <h4 className="font-bold text-foreground">{t.name}</h4>
-                    <p className="text-xs text-foreground/60">{t.location}</p>
+                    <h4 className="font-bold text-foreground">{t.authorName}</h4>
+                    <p className="text-xs text-foreground/60">{t.district}, {t.city} • <span className="text-primary font-medium">{t.service}</span></p>
+                    <p className="text-[10px] text-foreground/40 mt-1">Kaynak: {t.source === 'google' ? 'Google Haritalar' : 'Doğrulanmış İş Müşterisi'}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
-
-        <div className="text-center pt-2">
-          <p className="text-xs text-foreground/50">
-            * Müşteri geri bildirimleri saha uygulamalarımız sonrası derlenmiştir. Doğrulanmış Google İşletme yorumları işletme onayına tabidir.
-          </p>
         </div>
       </div>
     </section>

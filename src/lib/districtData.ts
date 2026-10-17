@@ -2,7 +2,10 @@ export interface DistrictInfo {
   slug: string;
   name: string;
   region: "Avrupa Yakası" | "Anadolu Yakası" | "Kocaeli";
+  indexable: boolean; // Sahibi onaylayana kadar false; true olunca indexlenir ve sitemap'e girer
+  verified: boolean;  // Mahalle ve yerel konut notu sahibi tarafından onaylandı mı?
   intro: string;
+  housingNotes?: string; // Bölgeye özgü konut/bina tipi notları
   neighbors: { name: string; slug: string; region: "istanbul" | "kocaeli" }[];
   highlights: string[];
   faqs: { question: string; answer: string }[];
@@ -21,6 +24,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "kadikoy",
     name: "Kadıköy",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Moda ve Fenerbahçe'nin tarihi ve yüksek tavanlı apartmanlarında ses yalıtımlı şilte ve gönye süpürgelik; sahil şeridinde neme dirençli parkeler.",
+    neighborhoods: ['Caferağa (Moda)', 'Fenerbahçe', 'Caddebostan', 'Suadiye', 'Bostancı', 'Erenköy', 'Göztepe', 'Kozyatağı', 'Feneryolu', 'Acıbadem', 'Rasimpaşa'],
     intro: "Kadıköy'ün tarihi apartmanlarından sahil şeridindeki modern rezidanslarına kadar tüm konut tiplerinde uzman zemin çözümleri sunuyoruz. Moda, Caddebostan, Suadiye ve Fenerbahçe gibi nem ve yoğun kullanıma maruz kalan bölgelerde yüksek dayanımlı laminat ve lamine parke montajı yapıyoruz. Kadıköy parke ustası arayışınızda saha tecrübemizle titiz işçilik ve doğru montaj sağlıyoruz.",
     neighbors: [
       { name: "Üsküdar", slug: "uskudar", region: "istanbul" },
@@ -51,6 +58,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "uskudar",
     name: "Üsküdar",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Üsküdar'ın köklü semtleri olan Kuzguncuk, Çengelköy, Beylerbeyi ve Altunizade'de ahşap zemin sıcaklığını modern parke çözümleriyle buluşturuyoruz. Boğaz hattının neme duyarlı havasına uygun 1. sınıf laminat ve masif parke seçeneklerimizle evlerinize estetik katıyoruz. Üsküdar parke döşeme hizmetimizle zeminlerinizi kusursuz ve uzun ömürlü hale getiriyoruz.",
     neighbors: [
       { name: "Kadıköy", slug: "kadikoy", region: "istanbul" },
@@ -78,6 +87,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "atasehir",
     name: "Ataşehir",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Batı Ataşehir ve finans merkezi rezidanslarında akustik ses yalıtımlı AC4/AC5 parke; İçerenköy konutlarında zemin düzeltme.",
+    neighborhoods: ['Atatürk', 'Barbaros', 'Küçükbakkalköy', 'İçerenköy', 'Kayışdağı', 'İnönü', 'Mevlana', 'Örnek', 'Esatpaşa', 'Yeniçamlıca'],
     intro: "Ataşehir'in modern kuleleri, site içi lüks daireleri ve kurumsal ofisleri için dayanıklı ve estetik parke uygulamaları gerçekleştiriyoruz. Batı Ataşehir, İçerenköy ve Küçükbakkalköy bölgelerinde yoğun yaya trafiğine ve yerden ısıtma sistemlerine tam uyumlu zeminler hazırlıyoruz. Ataşehir parke ustası ekibimiz, taahhüt edilen sürede temiz ve kusursuz teslimat sunar.",
     neighbors: [
       { name: "Kadıköy", slug: "kadikoy", region: "istanbul" },
@@ -105,6 +118,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "maltepe",
     name: "Maltepe",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Bağdat Caddesi uzantısındaki sahil dairelerinde lake süpürgelikli lüks laminat; Zümrütevler ve tepelik bölgelerde şap kot farkı tesviyesi.",
+    neighborhoods: ['Bağlarbaşı', 'Yalı', 'Feyzullah', 'Altayçeşme', 'İdealtepe', 'Küçükyalı', 'Çınar', 'Zümrütevler', 'Başıbüyük', 'Gülsuyu', 'Aydınevler'],
     intro: "Maltepe sahil hattından Başıbüyük ve Zümrütevler sırtlarına kadar tüm konut ve iş yerlerinde profesyonel parke döşeme yapıyoruz. Küçükyalı, İdealtepe ve Altayçeşme'deki daire yenilemelerinde şık renk kartelaları ve kaliteli süpürgeliklerle evinizi dönüştürüyoruz. Maltepe parke ustası kadromuz uzman tecrübesiyle her metrekarede özenli işçilik sunmaktadır.",
     neighbors: [
       { name: "Kadıköy", slug: "kadikoy", region: "istanbul" },
@@ -132,6 +149,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "kartal",
     name: "Kartal",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Kordonboyu sahil şeridinde deniz nemi bariyerli zeminler; Soğanlık, Karlıktepe ve Yakacık hattında kentsel dönüşümle yenilenen modern apartman daireleri.",
+    neighborhoods: ['Kordonboyu', 'Atalar', 'Petrol İş', 'Karlıktepe', 'Soğanlık Yeni', 'Soğanlık Orta', 'Uğur Mumcu', 'Cevizli', 'Çavuşoğlu', 'Yakacık'],
     intro: "Kartal'ın kentsel dönüşümle yenilenen modern projelerinde ve sahil sitelerinde yüksek standartlı laminat parke uygulamaları yürütüyoruz. Soğanlık, Uğur Mumcu, Atalar ve Rahmanlar semtlerinde her bütçeye uygun dayanıklı zemin seçenekleri hazırlıyoruz. Kartal parke döşeme hizmetimizle evinizi kısa sürede sıcak ve prestijli bir görünüme kavuşturuyoruz.",
     neighbors: [
       { name: "Maltepe", slug: "maltepe", region: "istanbul" },
@@ -155,6 +176,9 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "pendik",
     name: "Pendik",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Kurtköy ve Yenişehir bölgesinde yeni site ve villa tipi konutlar; sahil ve alt mahallelerde eski apartmanlar ve nem bariyerli şilte ihtiyacı.",
     metaTitle: "Pendik Parke Ustası | Laminat Parke ve Süpürgelik",
     metaDescription: "Pendik'te laminat parke döşeme, parke tamiri ve süpürgelik montajı hizmetlerini inceleyin. Şeffaf işçilik fiyatları ve ücretsiz yerinde keşif fırsatı.",
     customH1Text: "Pendik Parke Ustası ve Laminat Parke Döşeme",
@@ -262,6 +286,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "tuzla",
     name: "Tuzla",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Marina ve sahil hattında neme dirençli derzli parke; Tepeören ve Akfırat müstakil villalarında yerden ısıtma uyumlu geniş planklar.",
+    neighborhoods: ['Postane', 'Cami', 'İstasyon', 'Aydınlı', 'Yayla', 'Şifa', 'Mimarsinan', 'İçmeler', 'Tepeören', 'Akfırat'],
     intro: "Tuzla Marina çevresi, Aydınlı, Postane ve Tepeören villa bölgelerinde modern ve lüks zemin döşeme hizmeti vermekteyiz. Kocaeli sınırına komşu konumuyla Tuzla'da hem konut hem de sanayi/ofis tipi dayanıklı parke montajları yapıyoruz. Tuzla parke ustası ekibimiz nem ve ısı farklarına karşı en dayanıklı ürünleri uzmanlıkla uygular.",
     neighbors: [
       { name: "Pendik", slug: "pendik", region: "istanbul" },
@@ -285,6 +313,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "umraniye",
     name: "Ümraniye",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Şerifali ve Çakmak yeni konut projelerinde hızlı temiz montaj; Alemdağ Caddesi çevresi ticari ofis ve mağazalarda AC5 dayanım.",
+    neighborhoods: ['Atakent', 'Atatürk', 'Çakmak', 'Ihlamurkuyu', 'Şerifali', 'Tepeüstü', 'Madenler', 'Armağanevler', 'İstiklal', 'Namık Kemal'],
     intro: "İstanbul Finans Merkezi'nin kalbinde yer alan Ümraniye'de hem kurumsal iş yerlerine hem de modern aile konutlarına zemin çözümleri sağlıyoruz. Çakmak, Ihlamurkuyu, Atakent ve Şerifali'de kaliteli laminat parke ve süpürgelik uygulamaları yürütüyoruz. Ümraniye parke ustası kadromuzla hızlı, temiz ve uzun yıllar güvenle kullanacağınız zeminler kuruyoruz.",
     neighbors: [
       { name: "Üsküdar", slug: "uskudar", region: "istanbul" },
@@ -308,6 +340,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "cekmekoy",
     name: "Çekmeköy",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Çekmeköy'ün doğayla iç içe villa siteleri, Alemdağ ve Taşdelen bölgesindeki modern konutları için estetik parke uygulamaları yapıyoruz. Orman havasının nem dengesini gözeten yalıtımlı şilteler ve yüksek kaliteli laminat parkelerle zeminlerinizi koruyoruz. Çekmeköy parke ustası hizmetimizle yaşam alanlarınıza değer katıyoruz.",
     neighbors: [
       { name: "Ümraniye", slug: "umraniye", region: "istanbul" },
@@ -331,6 +365,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "sancaktepe",
     name: "Sancaktepe",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Sancaktepe'nin hızla büyüyen konut projelerinde Samandıra ve Sarıgazi genelinde kaliteli ve ekonomik parke döşeme hizmeti veriyoruz. Yeni teslim dairelerin zemin hazırlığı, şap kontrolü ve profesyonel laminat montajını titizlikle yürütüyoruz. Sancaktepe parke ustası olarak dayanıklı malzemeler ve kusursuz işçilik sunuyoruz.",
     neighbors: [
       { name: "Çekmeköy", slug: "cekmekoy", region: "istanbul" },
@@ -355,6 +391,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "sultanbeyli",
     name: "Sultanbeyli",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Sultanbeyli genelinde ev ve dükkan yenilemelerinde bütçe dostu, sağlam ve şık parke döşeme hizmetleri sağlıyoruz. Hasanpaşa, Battalgazi ve Mehmet Akif mahallelerinde kaliteli yerli ve ithal parke seçeneklerini ayağınıza getiriyoruz. Sultanbeyli parke ustası tecrübemizle uzun ömürlü zeminler inşa ediyoruz.",
     neighbors: [
       { name: "Sancaktepe", slug: "sancaktepe", region: "istanbul" },
@@ -377,6 +415,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "beykoz",
     name: "Beykoz",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Beykoz'un eşsiz yalıları, Riva ve Acarkent'teki prestijli villalarından Kavacık'taki modern ofislere kadar geniş yelpazede parke ustası hizmeti sunuyoruz. Boğaziçi ve Karadeniz ikliminin neme açık yapısında özel izolasyonlu taban uygulamalarıyla ahşabın ömrünü uzatıyoruz. Beykoz parke döşeme çalışmalarımızda lüks ve zarafeti bir arada sunuyoruz.",
     neighbors: [
       { name: "Üsküdar", slug: "uskudar", region: "istanbul" },
@@ -400,6 +440,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "sile",
     name: "Şile",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Şile'nin sahil evleri, yazlık villaları ve doğa içindeki ahşap konutlarında dayanıklı laminat ve lamine parke montajları gerçekleştiriyoruz. Kış aylarında boş kalan ve neme maruz kalan yazlıklarda kabarma yapmayan zemin sistemleri kuruyoruz. Şile parke ustası arayışınızda deneyimli ekibimizle her mevsim yanınızdayız.",
     neighbors: [
       { name: "Beykoz", slug: "beykoz", region: "istanbul" },
@@ -423,6 +465,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "adalar",
     name: "Adalar",
     region: "Anadolu Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Büyükada, Heybeliada, Kınalıada ve Burgazada'daki tarihi köşkler ve nostaljik evler için hassas parke yenileme ve döşeme hizmeti sağlıyoruz. Adalar'ın deniz havası ve tarihi dokusuna uyumlu masif, lamine ve suya dayanıklı laminat parkeler uyguluyoruz. Adalar parke ustası olarak lojistik süreçleri organize ederek zeminlerinizi kusursuzca teslim ediyoruz.",
     neighbors: [
       { name: "Kadıköy", slug: "kadikoy", region: "istanbul" },
@@ -447,6 +491,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "besiktas",
     name: "Beşiktaş",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Beşiktaş'ın Levent, Bebek, Etiler ve Ortaköy gibi prestijli semtlerinde lüks konutlar ve kurumsal ofisler için premium parke döşeme hizmeti sunuyoruz. Tarihi apartmanların mimari dokusuna uyumlu lamine, masif ve derzli parke seçeneklerimizle mekanlarınıza değer katıyoruz. Beşiktaş parke ustası kadromuz yüksek ses yalıtımı ve milimetrik işçilik standartlarıyla çalışır.",
     neighbors: [
       { name: "Şişli", slug: "sisli", region: "istanbul" },
@@ -470,6 +516,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "sisli",
     name: "Şişli",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Şişli'nin Nişantaşı, Bomonti, Teşvikiye ve Mecidiyeköy bölgelerindeki yüksek tavanlı tarihi dairelerde ve modern rezidanslarda parke ustası hizmeti veriyoruz. Hem şık butik mağazalar hem de konforlu evler için çizilmeye dayanıklı modern zemin tasarımları oluşturuyoruz. Şişli parke döşeme ustalarımızla mekanlarınızı estetik ve konforla buluşturuyoruz.",
     neighbors: [
       { name: "Beşiktaş", slug: "besiktas", region: "istanbul" },
@@ -493,6 +541,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "sariyer",
     name: "Sarıyer",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Sarıyer'in Zekeriyaköy, Tarabya, Yeniköy, Maslak ve İstinye bölgelerindeki lüks villa ve koru manzaralı konutlarında üst düzey parke döşeme hizmeti sağlıyoruz. Doğal ahşap dokulu lamine ve suya dayanıklı kaliteli laminat parkelerimizle villalarınıza sıcaklık katıyoruz. Sarıyer parke ustası ekibimiz, geniş metrekareli mekanlarda kusursuz derz hizalaması ve süpürgelik işçiliği sunar.",
     neighbors: [
       { name: "Beşiktaş", slug: "besiktas", region: "istanbul" },
@@ -515,6 +565,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "bakirkoy",
     name: "Bakırköy",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Bakırköy'ün Ataköy, Florya, Yeşilköy ve Zuhuratbaba semtlerindeki deniz havasına açık daire ve villalarında profesyonel parke montajı yapıyoruz. Sahil şeridinin neme maruz kalan yapısına dayanıklı AC4 sınıfı laminat parke ve lake süpürgelik kombinasyonlarıyla evinizi yeniliyoruz. Bakırköy parke ustası arayışınızda garantili işçilik sunuyoruz.",
     neighbors: [
       { name: "Küçükçekmece", slug: "kucukcekmece", region: "istanbul" },
@@ -537,6 +589,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "basaksehir",
     name: "Başakşehir",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Başakşehir ve Bahçeşehir'in modern site projelerinde, geniş aile dairelerinde kaliteli parke döşeme hizmetleri gerçekleştiriyoruz. Yerden ısıtma sistemlerine tam uyumlu, ısı transferini engellemeyen şilte ve laminat kombinasyonları uyguluyoruz. Başakşehir parke ustası ekibimiz taahhüt ettiği günde montajı eksiksiz tamamlar.",
     neighbors: [
       { name: "Küçükçekmece", slug: "kucukcekmece", region: "istanbul" },
@@ -561,6 +615,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "beylikduzu",
     name: "Beylikdüzü",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Beylikdüzü'nün geniş caddeleri, modern siteleri ve Yakuplu marinası çevresindeki konutlarda estetik parke uygulamaları yapıyoruz. Barış, Adnan Kahveci ve Beykent semtlerinde hem dayanıklı hem de bütçe dostu laminat zemin kaplamaları sağlıyoruz. Beylikdüzü parke ustası ekibimiz kaliteli işçiliği uygun fiyatla buluşturur.",
     neighbors: [
       { name: "Avcılar", slug: "avcilar", region: "istanbul" },
@@ -583,6 +639,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "avcilar",
     name: "Avcılar",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Avcılar genelinde kentsel dönüşümle inşa edilen yeni binalarda ve mevcut dairelerde profesyonel parke döşeme hizmeti vermekteyiz. Ambarlı, Cihangir ve Denizköşkler'de neme dayanıklı kaliteli laminat zeminleri titizlikle uyguluyoruz. Avcılar parke ustası olarak sağlam işçilik ve müşteri memnuniyeti sunuyoruz.",
     neighbors: [
       { name: "Küçükçekmece", slug: "kucukcekmece", region: "istanbul" },
@@ -606,6 +664,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "kucukcekmece",
     name: "Küçükçekmece",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Küçükçekmece Gölü kıyısındaki modern sitelerden Cennet, Halkalı ve Atakent etaplarına kadar her noktada parke döşeme hizmeti sağlıyoruz. Yoğun aile yaşamına uygun, leke tutmayan ve çizilmez laminat parkelerimizle konforlu yaşam alanları oluşturuyoruz. Küçükçekmece parke ustası ekibimiz daima yanınızdadır.",
     neighbors: [
       { name: "Bakırköy", slug: "bakirkoy", region: "istanbul" },
@@ -630,6 +690,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "bahcelievler",
     name: "Bahçelievler",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Bahçelievler, Yayla, Şirinevler ve Yenibosna semtlerindeki konutlarda parke yenileme ve montaj işlerini profesyonellikle yürütüyoruz. Eski yapıların zemin düzensizliklerini mastarlı kontrol ve uygun şilte desteğiyle gidererek düzgün bir yüzey elde ediyoruz. Bahçelievler parke ustası arayanlara tecrübeli ekibimizle profesyonel çözümler sunuyoruz.",
     neighbors: [
       { name: "Bakırköy", slug: "bakirkoy", region: "istanbul" },
@@ -653,6 +715,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "bagcilar",
     name: "Bağcılar",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Bağcılar genelinde Güneşli Basın Ekspres hattındaki rezidanslardan mahalle konutlarına kadar her alanda parke ustası hizmeti veriyoruz. Yüksek dayanımlı ve ekonomik laminat parkelerimizle ev ve iş yerlerinizin havasını değiştiriyoruz. Bağcılar parke döşeme ekibimiz hızlı ve temiz işçilik ilkesiyle çalışır.",
     neighbors: [
       { name: "Bahçelievler", slug: "bahcelievler", region: "istanbul" },
@@ -677,6 +741,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "esenyurt",
     name: "Esenyurt",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Esenyurt'un büyük site komplekslerinde, yeni teslim rezidanslarında ve ticari birimlerinde hızlı parke döşeme hizmeti sağlıyoruz. Geniş metrekareli projelerde deneyimli ekibimizle kısa sürede anahtar teslim zemin kaplamaları gerçekleştiriyoruz. Esenyurt parke ustası ihtiyaçlarınızda en uygun fiyat ve kaliteli malzeme garantisi veriyoruz.",
     neighbors: [
       { name: "Beylikdüzü", slug: "beylikduzu", region: "istanbul" },
@@ -700,6 +766,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "buyukcekmece",
     name: "Büyükçekmece",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Büyükçekmece göl ve deniz çevresindeki villalarda, Mimaroba ve Sinanoba konutlarında seçkin parke montajı hizmeti vermekteyiz. Neme açık sahil havasına uygun özel parafinli derzli parkelerle uzun ömürlü mekanlar inşa ediyoruz. Büyükçekmece parke ustası olarak villalarınıza ve dairelerinize şıklık katıyoruz.",
     neighbors: [
       { name: "Beylikdüzü", slug: "beylikduzu", region: "istanbul" },
@@ -723,6 +791,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "beyoglu",
     name: "Beyoğlu",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Beyoğlu'nun Cihangir, Galata, Karaköy ve Taksim gibi tarihi dokuya sahip semtlerinde aslına uygun zemin yenilemeleri yapıyoruz. Yüksek tavanlı tarihi binaların özel taban yapılarına hassasiyetle yaklaşarak masif, lamine ve laminat parke uyguluyoruz. Beyoğlu parke ustası kadromuz estetik ve tarihi mimariyle uyumlu çalışır.",
     neighbors: [
       { name: "Şişli", slug: "sisli", region: "istanbul" },
@@ -746,6 +816,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "fatih",
     name: "Fatih",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Tarihi Yarımada'nın kalbi Fatih'te, Çapa, Fındıkzade, Aksaray ve Balat semtlerinde güvenilir parke döşeme hizmeti sağlıyoruz. Eski apartman zeminlerindeki kot farklarını ustalıkla gidererek pürüzsüz ve sıcak ahşap zeminler inşa ediyoruz. Fatih parke ustası olarak bütçenize uygun kaliteli malzemelerle hizmetinizdeyiz.",
     neighbors: [
       { name: "Zeytinburnu", slug: "zeytinburnu", region: "istanbul" },
@@ -768,6 +840,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "kagithane",
     name: "Kâğıthane",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Kâğıthane'nin kentsel dönüşümle parlayan Cendere vadisi, Seyrantepe ve Çeliktepe semtlerindeki modern konut ve ofislerde parke ustası hizmeti sunuyoruz. Şık plazalardan aile apartmanlarına kadar her mekana uygun çizilmez laminat parkeler uyguluyoruz. Kâğıthane parke döşeme ekibimiz estetik ve sağlamlığı garanti eder.",
     neighbors: [
       { name: "Şişli", slug: "sisli", region: "istanbul" },
@@ -791,6 +865,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "eyupsultan",
     name: "Eyüpsultan",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Eyüpsultan'ın tarihi merkezinden Göktürk ve Kemerburgaz'ın seçkin villa yerleşimlerine kadar geniş bir alanda parke döşeme hizmeti sağlıyoruz. Göktürk villalarında lüks lamine ve balıksırtı parkeler uygularken, merkez mahallelerde ekonomik laminat çözümleri sunuyoruz. Eyüpsultan parke ustası olarak her mekana özel titiz işçilik sergiliyoruz.",
     neighbors: [
       { name: "Sarıyer", slug: "sariyer", region: "istanbul" },
@@ -815,6 +891,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "zeytinburnu",
     name: "Zeytinburnu",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Zeytinburnu sahilindeki lüks projelerden Kazlıçeşme ve merkez mahallelerine kadar tüm konutlarda parke ustası hizmeti sunuyoruz. Sahil hattının nemli havasına karşı dayanıklı zemin kaplamaları uygulayarak evlerinizin şıklığını uzun yıllar koruyoruz. Zeytinburnu parke döşeme ekibimiz profesyonel montaj ve süpürgelik işçiliği ile yanınızdadır.",
     neighbors: [
       { name: "Bakırköy", slug: "bakirkoy", region: "istanbul" },
@@ -838,6 +916,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "gungoren",
     name: "Güngören",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Güngören ve Merter tekstil merkezindeki iş yerleri ile konutlarda dayanıklı zemin döşeme hizmeti sağlıyoruz. Mağaza ve showroomlarda yoğun trafiğe dayanıklı AC4 ve AC5 sınıfı laminat parkeler uyguluyoruz. Güngören parke ustası ekibimiz uygun fiyat ve sağlam montajla hizmetinizdedir.",
     neighbors: [
       { name: "Bahçelievler", slug: "bahcelievler", region: "istanbul" },
@@ -861,6 +941,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "bayrampasa",
     name: "Bayrampaşa",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Bayrampaşa'nın konut ve ticaret alanlarında uzun ömürlü parke çözümleri sunuyoruz. Kocatepe, Muratpaşa ve Yıldırım mahallelerinde evlerin zeminini modern laminat parkelerle yeniliyoruz. Bayrampaşa parke ustası tecrübemizle sorunsuz montaj sağlıyoruz.",
     neighbors: [
       { name: "Eyüpsultan", slug: "eyupsultan", region: "istanbul" },
@@ -884,6 +966,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "gaziosmanpasa",
     name: "Gaziosmanpaşa",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Gaziosmanpaşa'nın kentsel dönüşümle modernleşen bölgelerinde ve mevcut dairelerinde kaliteli laminat parke döşeme hizmeti veriyoruz. Zemin eğriliklerini kapron ve tesviye şapıyla gidererek pürüzsüz sonuçlar elde ediyoruz. Gaziosmanpaşa parke ustası kadromuzla yanınızdayız.",
     neighbors: [
       { name: "Eyüpsultan", slug: "eyupsultan", region: "istanbul" },
@@ -907,6 +991,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "esenler",
     name: "Esenler",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Esenler'in tüm mahallelerinde ekonomik ve kaliteli laminat parke montajı yapıyoruz. Dayanıklı malzeme, sağlam işçilik ve şık süpürgeliklerle evinizi yeniliyoruz. Esenler parke ustası arayan müşterilerimize hızlı randevu ve garantili hizmet sağlıyoruz.",
     neighbors: [
       { name: "Bağcılar", slug: "bagcilar", region: "istanbul" },
@@ -930,6 +1016,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "sultangazi",
     name: "Sultangazi",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Sultangazi genelinde dayanıklı ve estetik parke döşeme uygulamaları sunuyoruz. Cebeci, Habibler ve Gazi mahallelerinde konut ve iş yerlerine uygun zeminleri kaliteli malzemelerle hazırlıyoruz. Sultangazi parke ustası ekibimiz uygun fiyatlarla hizmetinizdedir.",
     neighbors: [
       { name: "Gaziosmanpaşa", slug: "gaziosmanpasa", region: "istanbul" },
@@ -952,6 +1040,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "arnavutkoy",
     name: "Arnavutköy",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "İstanbul Havalimanı çevresinde hızla gelişen Arnavutköy ve Bolluca bölgesindeki yeni konutlarda parke döşeme hizmeti vermekteyiz. Yeni teslim binaların şap durumunu kontrol ederek rutubet önleyici şiltelerle laminat montajı yapıyoruz. Arnavutköy parke ustası ekibimiz garantili işçilik sunar.",
     neighbors: [
       { name: "Başakşehir", slug: "basaksehir", region: "istanbul" },
@@ -975,6 +1065,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "catalca",
     name: "Çatalca",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Çatalca'nın doğayla iç içe müstakil evleri, çiftlik konutları ve köylerinde ahşap zemin ve laminat parke döşeme çözümleri sunuyoruz. Geniş ve havadar mekanlarda zemin soğuğunu kesen kalın şilte uygulamaları yapıyoruz. Çatalca parke ustası olarak sağlam ve sıcak zeminler oluşturuyoruz.",
     neighbors: [
       { name: "Büyükçekmece", slug: "buyukcekmece", region: "istanbul" },
@@ -997,6 +1089,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "silivri",
     name: "Silivri",
     region: "Avrupa Yakası",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Silivri'nin sahil siteleri, yazlık konutları ve merkez mahallelerinde neme dayanıklı parke döşeme hizmeti sağlıyoruz. Kış aylarında kapalı kalan yazlıklarda dahi bozulmayan kaliteli laminat parkeler uyguluyoruz. Silivri parke ustası olarak tatil evlerinizi ve dairelerinizi konforla yeniliyoruz.",
     neighbors: [
       { name: "Büyükçekmece", slug: "buyukcekmece", region: "istanbul" },
@@ -1020,6 +1114,10 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "gebze",
     name: "Gebze",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
+    housingNotes: "Mutlukent ve Tatlıkuyu aile sitelerinde dayanıklı laminat parke döşeme; sanayi çevresi yoğun kullanılan konut ve ofislerde sağlam zemin işçiliği.",
+    neighborhoods: ['Hacıhalil', 'Sultan Orhan', 'Osman Yılmaz', 'Arapçeşme', 'Güzeller', 'Tatlıkuyu', 'Barış', 'Mutlukent', 'Köşklü Çeşme', 'Gaziler'],
     intro: "Gebze'nin dinamik sanayi ve konut merkezinde hem fabrikalar ve kurumsal ofisler hem de modern aile daireleri için parke ustası hizmeti veriyoruz. Mutlukent, Tatlıkuyu, Osman Yılmaz ve Yenikent bölgelerinde yoğun yaya trafiğine dayanıklı laminat zeminler kuruyoruz. Saha tecrübemizle Gebze parke döşeme alanında titiz ve özenli hizmet sunuyoruz.",
     neighbors: [
       { name: "Darıca", slug: "darica", region: "kocaeli" },
@@ -1048,6 +1146,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "darica",
     name: "Darıca",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Darıca'nın sahil şeridi, Bayramoğlu yarımadası ve Emek mahallesindeki konut ve villalarda profesyonel parke montajı yapıyoruz. Deniz kenarındaki nemli hava şartlarına tam dayanıklı parafinli laminat parkelerle zeminlerin kabarmasını önlüyoruz. Darıca parke ustası ekibimiz şık lake süpürgelikler ve garantili işçilik sunar.",
     neighbors: [
       { name: "Gebze", slug: "gebze", region: "kocaeli" },
@@ -1070,6 +1170,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "cayirova",
     name: "Çayırova",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Çayırova'nın gelişen modern yerleşimlerinde ve yeni site projelerinde kaliteli laminat parke döşeme hizmeti sağlıyoruz. İstanbul Anadolu Yakası ile Kocaeli bağlantı noktasındaki konumuyla hızlı keşif ve montaj imkanı sunuyoruz. Çayırova parke ustası arayışınızda uzman kadromuz ve uygun fiyatlarımızla hizmetinizdeyiz.",
     neighbors: [
       { name: "Gebze", slug: "gebze", region: "kocaeli" },
@@ -1092,6 +1194,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "dilovasi",
     name: "Dilovası",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Dilovası'ndaki sanayi tesisleri, lojistik depoların idari ofisleri ve yerleşim alanlarında dayanıklı parke döşeme hizmeti veriyoruz. Ağır kullanıma ve toza dayanıklı ticari zemin kaplamaları uygulayarak uzun ömürlü çözümler sağlıyoruz. Dilovası parke ustası ekibimiz profesyonel yaklaşımıyla yanınızdadır.",
     neighbors: [
       { name: "Gebze", slug: "gebze", region: "kocaeli" },
@@ -1113,6 +1217,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "izmit",
     name: "İzmit",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Kocaeli'nin merkezi İzmit'te Yahya Kaptan, Alikahya, Bağçeşme ve Bekirdere semtlerinde kaliteli parke döşeme hizmeti vermekteyiz. Hem modern rezidanslara hem de müstakil evlere uygun zengin parke koleksiyonumuzla mekanlarınızı yeniliyoruz. İzmit parke ustası ekibimiz saha tecrübesiyle uzun ömürlü ve estetik zeminler sunmaktadır.",
     neighbors: [
       { name: "Derince", slug: "derince", region: "kocaeli" },
@@ -1136,6 +1242,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "derince",
     name: "Derince",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Derince genelinde konut ve iş yerlerine yönelik güvenilir laminat parke döşeme hizmeti sunuyoruz. Zemin şapının düzeltilmesinden süpürgelik montajına kadar tüm aşamaları titizlikle tamamlıyoruz. Derince parke ustası kadromuzla estetik ve uzun ömürlü mekanlar yaratıyoruz.",
     neighbors: [
       { name: "İzmit", slug: "izmit", region: "kocaeli" },
@@ -1157,6 +1265,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "korfez",
     name: "Körfez",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Körfez (Tütünçiftlik ve Hereke) bölgesinde konutlara ve işletmelere özel parke çözümleri sunuyoruz. Sahil hattındaki nem faktörünü dikkate alarak alt izolasyonu güçlü laminat parkeler döşüyoruz. Körfez parke ustası arayışınızda 1. sınıf işçilik ve uygun fiyatlarla yanınızdayız.",
     neighbors: [
       { name: "Derince", slug: "derince", region: "kocaeli" },
@@ -1178,6 +1288,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "karamursel",
     name: "Karamürsel",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Karamürsel'in sahil evleri, yazlık konutları ve ferah dairelerinde estetik laminat ve lamine parke montajı yapıyoruz. Körfez manzaralı yaşam alanlarınıza sıcak ahşap dokunuşlar kazandırıyoruz. Karamürsel parke ustası olarak titiz işçilik ve kaliteli malzeme sağlıyoruz.",
     neighbors: [
       { name: "Gölcük", slug: "golcuk", region: "kocaeli" }
@@ -1198,6 +1310,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "golcuk",
     name: "Gölcük",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Gölcük ve Değirmendere sahilindeki modern konutlarda uzman parke döşeme hizmeti sağlıyoruz. Değirmendere'nin nezih semtlerinde şık derzli laminat parkeler ve modern lake süpürgeliklerle evleri yeniliyoruz. Gölcük parke ustası ekibimiz sağlam montaj ve garantiyle çalışır.",
     neighbors: [
       { name: "Başiskele", slug: "basiskele", region: "kocaeli" },
@@ -1219,6 +1333,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "basiskele",
     name: "Başiskele",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Kocaeli'nin en hızlı değer kazanan villa ve lüks konut bölgesi Başiskele'de birinci sınıf parke ustası hizmeti sunuyoruz. Yuvacık, Kullar ve sahil hattındaki modern villalarda yerden ısıtmaya tam uyumlu, geniş formatlı lamine ve laminat zeminler uyguluyoruz. Başiskele parke döşeme ustalarımızla villalarınıza değer katın.",
     neighbors: [
       { name: "İzmit", slug: "izmit", region: "kocaeli" },
@@ -1241,6 +1357,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "kartepe",
     name: "Kartepe",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Kartepe'nin doğayla iç içe dağ eteklerindeki villalarında, otel projelerinde ve modern sitelerinde dayanıklı parke montajı yapıyoruz. Kış aylarındaki zemin soğuğunu kesen kalın yalıtım tabanları ve ahşabın sıcaklığını hissettiren doğal dokulu zeminler kuruyoruz. Kartepe parke ustası ekibimiz her mevsim güvenilir zeminler sunar.",
     neighbors: [
       { name: "İzmit", slug: "izmit", region: "kocaeli" },
@@ -1263,6 +1381,8 @@ export const districtData: Record<string, DistrictInfo> = {
     slug: "kandira",
     name: "Kandıra",
     region: "Kocaeli",
+    indexable: false, // TODO(sahibi onaylayınca tek satırda true yapabilir)
+    verified: false,  // TODO(sahibi kontrol edip onaylayınca true yapacak)
     intro: "Kandıra'nın Kerpe, Kefken, Cebeci sahil beldelerindeki yazlıklarında ve merkez konutlarında suya ve neme dayanıklı parke montajı yapıyoruz. Karadeniz sahil ikliminin getirdiği neme karşı kabarma yapmayan parafinli derzli laminat zeminler kuruyoruz. Kandıra parke ustası olarak tatil evlerinizi yaza hazırlıyoruz.",
     neighbors: [
       { name: "İzmit", slug: "izmit", region: "kocaeli" },
@@ -1286,3 +1406,9 @@ export const districtData: Record<string, DistrictInfo> = {
 export const getDistrictInfo = (slug: string): DistrictInfo | undefined => {
   return districtData[slug];
 };
+
+export function isDistrictIndexable(slug: string): boolean {
+  const d = districtData[slug];
+  // Sahibi indexable: true yapana kadar varsayılan olarak noindex kalır
+  return d ? Boolean(d.indexable) : false;
+}

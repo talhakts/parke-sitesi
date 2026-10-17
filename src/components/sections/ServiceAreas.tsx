@@ -13,7 +13,7 @@ export function ServiceAreas() {
   const kocaeli = districts.filter(d => d.region === "Kocaeli");
 
   return (
-    <section className="py-20 bg-muted/20 border-t border-border/50">
+    <section id="bolgeler" className="py-20 bg-muted/20 border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
