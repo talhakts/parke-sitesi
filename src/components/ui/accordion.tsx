@@ -3,10 +3,11 @@ import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
-function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
+function Accordion({ className, keepMounted = true, ...props }: AccordionPrimitive.Root.Props) {
   return (
     <AccordionPrimitive.Root
       data-slot="accordion"
+      keepMounted={keepMounted}
       className={cn("flex w-full flex-col", className)}
       {...props}
     />
@@ -49,11 +50,13 @@ function AccordionTrigger({
 function AccordionContent({
   className,
   children,
+  keepMounted = true,
   ...props
 }: AccordionPrimitive.Panel.Props) {
   return (
     <AccordionPrimitive.Panel
       data-slot="accordion-content"
+      keepMounted={keepMounted}
       className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
       {...props}
     >

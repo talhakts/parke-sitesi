@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = districtInfo?.metaTitle || `${district.name} Parke Ustası | Laminat Parke ve Süpürgelik`;
   const description = districtInfo?.metaDescription || (districtInfo?.intro 
     ? `${districtInfo.intro.slice(0, 155)}...`
-    : `${district.name}'de laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. 30 yılı aşkın tecrübemizle ücretsiz keşif ve uygun fiyatlar için arayın!`);
+    : `${district.name}'de laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. Uzman işçilik, şeffaf fiyatlar ve ücretsiz keşif için arayın!`);
 
   return {
     title,
@@ -87,21 +87,21 @@ export default async function DistrictPage({ params }: Props) {
     slug: district.slug,
     name: district.name,
     region: district.region,
-    intro: `${district.name} ilçesinde 30 yılı aşkın deneyimimizle tüm konut, ofis ve villa projelerinde yüksek kaliteli laminat parke, lamine parke ve süpürgelik montajı hizmeti veriyoruz. Doğal ahşap dokusunu yaşam alanlarınıza taşıyarak uzun yıllar dayanıklı, estetik zeminler oluşturuyoruz.`,
+    intro: `${district.name} ilçesinde konut, ofis ve villa projelerinde yüksek kaliteli laminat parke, süpürgelik montajı ve zemin tamiri hizmeti veriyoruz. Doğal ahşap dokusunu yaşam alanlarınıza taşıyarak uzun yıllar dayanıklı, estetik zeminler oluşturuyoruz.`,
     neighbors: [
       { name: "Kadıköy", slug: "kadikoy", region: "istanbul" as const },
       { name: "Üsküdar", slug: "uskudar", region: "istanbul" as const },
       { name: "Beşiktaş", slug: "besiktas", region: "istanbul" as const }
     ],
     highlights: [
-      `${district.name} geneline aynı gün ücretsiz keşif ve numune servisi`,
-      "1. sınıf suya ve çizilmeye dayanıklı laminat parke çeşitleri",
-      "Tozsuz, temiz ve 1 günde garantili montaj işçiliği"
+      `${district.name} geneline yerinde ücretsiz keşif ve numune servisi`,
+      "1. sınıf neme ve çizilmeye dayanıklı laminat parke çeşitleri",
+      "Tozsuz, temiz ve özenli usta işçiliği"
     ],
     faqs: [
       {
         question: `${district.name}'de parke döşeme işlemi ne kadar sürer?`,
-        answer: `${district.name} bölgesinde ortalama 80-120 m² bir dairenin laminat parke döşeme ve süpürgelik montajını 1 gün içinde tamamlayıp teslim ediyoruz.`
+        answer: `${district.name} bölgesinde standart boş bir dairenin laminat parke döşeme ve süpürgelik montajı genellikle 1 iş günü içinde tamamlanıp teslim edilir.`
       },
       {
         question: `${district.name} için keşif hizmetiniz ücretli mi?`,

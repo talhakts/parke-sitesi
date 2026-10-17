@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const repairFaqs = [
   {
     question: "Kabaran parke için komple bütün evi değiştirmek gerekir mi?",
-    answer: "Hayır. Parke kabarmalarının %90'ı montaj sırasında duvar kenarlarında genleşme payı (10-15 mm) bırakılmamasından kaynaklanır. Süpürgelikler sökülüp duvara dayanan kısımlar profesyonel testereyle traşlanarak genleşme payı açıldığında parke kendiliğinden yerine oturur."
+    answer: "Hayır. Parke kabarmalarının %90'ı montaj sırasında duvar kenarlarında 8-12 mm genleşme payı bırakılmamasından kaynaklanır. Süpürgelikler sökülüp duvara dayanan kısımlar profesyonel testereyle traşlanarak genleşme payı açıldığında parke kendiliğinden yerine oturur."
   },
   {
     question: "Su alan laminat parke kuruyunca düzelir mi?",
@@ -51,11 +51,19 @@ const repairFaqs = [
   },
   {
     question: "Gıcırdayan parke tamir edilebilir mi?",
-    answer: "Evet. Gıcırdama genellikle alt zemindeki kot farkından, kalitesiz şiltedir veya kilit sürtünmelerinden meydana gelir. Problemli bölge sökülerek zemin tesviyesi düzeltilir ve uygun yalıtım malzemesiyle ses kesilir."
+    answer: "Evet. Gıcırdama genellikle alt zemindeki kot farkından, kalitesiz şilteden veya kilit sürtünmelerinden meydana gelir. Problemli bölge sökülerek zemin tesviyesi düzeltilir ve uygun yalıtım malzemesiyle ses kesilir."
   },
   {
     question: "Tamir için keşif hizmetiniz var mı?",
     answer: "Evet, İstanbul Anadolu Yakası ve Kocaeli bölgelerinde hasar tespit keşfi yapıyoruz. Hasarın boyutuna göre yerinde en uygun maliyetli onarım yöntemini belirliyoruz."
+  },
+  {
+    question: "Parke tamiri ne kadar sürer ve tamir sırasında evde toz çıkar mı?",
+    answer: "Genleşme traşı ve lokal panel değişimi gibi işlemler genellikle 1-3 saat içerisinde tamamlanır. Vakumlu profesyonel testere kullanılarak toz oluşumu minimumda tutulur ve ev düzeniniz bozulmadan işlem bitirilir."
+  },
+  {
+    question: "Tamir edilecek parkenin aynı rengi veya modeli bulunamazsa ne yapılır?",
+    answer: "Eğer elinizde yedek parça yoksa ve piyasada aynı seri bulunamıyorsa, gardırop veya yatak altı gibi görünmeyen bir noktadan orijinal parça sökülerek hasarlı alana aktarılabilir; görünmeyen yere ise en yakın ton uygulanabilir."
   }
 ];
 
@@ -119,7 +127,7 @@ export default function ParquetRepairPage() {
         title="İstanbul"
         highlight="Parke Tamiri ve Onarımı"
         subtitle="Hızlı Mobil Servis"
-        description="Kabaran, şişen, su hasarı gören veya kapı altı sürtmesi yapan zeminlerinizi komple değiştirmeden uygun maliyetle tamir ediyoruz. 30 yıllık tecrübeyle garantili lokal onarım."
+        description="Kabaran, şişen, su hasarı gören veya kapı altı sürtmesi yapan zeminlerinizi komple değiştirmeden uygun maliyetle tamir ediyoruz. Titiz usta müdahalesiyle lokal onarım."
         imageAlt="İstanbul parke tamiri ve kabaran laminat onarımı ustası"
       />
 
@@ -194,7 +202,7 @@ export default function ParquetRepairPage() {
               <h3>Parke Tamiri Servisi Sunduğumuz Bölgeler</h3>
             </div>
             <p className="text-sm text-foreground/70 leading-relaxed">
-              İstanbul genelinde acil parke kabarması ve su hasarı onarımı için aynı gün servis sağlıyoruz:
+              İstanbul genelinde acil parke kabarması ve su hasarı onarımı için mobil servis sağlıyoruz:
             </p>
             <div className="flex flex-wrap gap-2.5 pt-2">
               {[
@@ -233,7 +241,7 @@ export default function ParquetRepairPage() {
             </h2>
           </div>
 
-          <Accordion className="w-full space-y-3">
+          <Accordion defaultValue={["faq-0"]} className="w-full space-y-3">
             {repairFaqs.map((faq, index) => (
               <AccordionItem
                 key={index}

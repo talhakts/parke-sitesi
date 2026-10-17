@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.parkeustam.com"),
   title: "İstanbul Parke Ustası | Laminat Parke Döşeme – Parke Ustam",
-  description: "İstanbul Anadolu Yakası başta olmak üzere tüm İstanbul ve Kocaeli bölgesinde 30 yılı aşkın tecrübeyle garantili laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. Ücretsiz keşif için arayın.",
+  description: "İstanbul Anadolu Yakası başta olmak üzere tüm İstanbul ve Kocaeli bölgesinde uzman laminat parke döşeme, süpürgelik montajı ve parke tamiri hizmeti. Ücretsiz keşif için arayın.",
   keywords: [
     "istanbul parke ustası",
     "parke ustası",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "İstanbul Parke Ustası | Laminat Parke Döşeme – Parke Ustam",
-    description: "İstanbul genelinde ve Anadolu Yakası'nda 30 yılı aşkın tecrübeyle profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
+    description: "İstanbul genelinde ve Anadolu Yakası'nda uzman işçilikle profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
     url: "https://www.parkeustam.com",
     siteName: "Parke Ustam",
     locale: "tr_TR",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "İstanbul Parke Ustası | Laminat Parke Döşeme – Parke Ustam",
-    description: "İstanbul genelinde ve Anadolu Yakası'nda 30 yılı aşkın tecrübeyle profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
+    description: "İstanbul genelinde ve Anadolu Yakası'nda uzman işçilikle profesyonel laminat parke döşeme, süpürgelik montajı ve zemin çözümleri.",
   },
   verification: {
     google: "nxNAelE9Xq4PEkBsAt_2pd6MJv2gfB8jfbX00f1LKeg",

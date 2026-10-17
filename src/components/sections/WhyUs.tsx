@@ -10,7 +10,7 @@ const reasons = [
   "Şeffaf fiyatlandırma, sürpriz maliyet yok",
   "Uygulama sonrası temiz teslimat",
   "Kaliteli malzeme kullanımı",
-  "Zamanında iş teslim garantisi",
+  "Zamanında ve titiz iş teslimi",
   "Uygulama sonrası destek hizmeti"
 ]
 

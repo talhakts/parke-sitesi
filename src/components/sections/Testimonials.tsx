@@ -2,37 +2,33 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Star, MessageSquareQuote } from 'lucide-react'
+import { MessageSquareQuote, CheckCircle2 } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
 
 const testimonials = [
   {
     id: 1,
-    name: "Ahmet Yılmaz",
+    name: "Ahmet Y.",
     location: "Kadıköy, İstanbul",
-    comment: "Salonumuzun eskiyen parkelerini söküp yerine harika bir laminat döşediler. İşçilik muazzamdı ve söz verdikleri günde bitirdiler.",
-    rating: 5,
+    comment: "Salonumuzun eskiyen parkelerini söküp yerine derzli laminat döşendi. Duvar diplerindeki genleşme payı ve süpürgelik birleşimleri gayet özenli yapıldı.",
   },
   {
     id: 2,
     name: "Ayşe K.",
-    location: "Beşiktaş, İstanbul",
-    comment: "Fiyat hesaplama modülünden aldığım fiyata çok yakın bir teklif sundular. Keşif süreci çok profesyoneldi. Kesinlikle tavsiye ederim.",
-    rating: 5,
+    location: "Pendik, İstanbul",
+    comment: "Fiyat hesaplama modülünden aldığım tahmine çok yakın bir keşif teklifi sunuldu. Süreç şeffaf ilerledi, eşyalı odamız dikkatle tamamlandı.",
   },
   {
     id: 3,
-    name: "Mehmet Demir",
+    name: "Mehmet D.",
     location: "Üsküdar, İstanbul",
-    comment: "Süpürgelik detaylarına kadar her şey mükemmel. Temiz çalışıyorlar ve çöplerini bile alıp götürüyorlar. Güvenilir usta bulmak zor, Parke Ustam'a teşekkürler.",
-    rating: 5,
+    comment: "Lake süpürgeliklerin 45 derece köşe gönye kesimleri çok düzgün. Çıkan atıklar düzenli çuvallandı ve temiz teslim edildi.",
   },
   {
     id: 4,
     name: "Zeynep S.",
     location: "Maltepe, İstanbul",
-    comment: "Ofisimizin zeminini baştan aşağı yenilediler. Hafta sonu çalışarak işimizi hiç aksatmadılar.",
-    rating: 5,
+    comment: "İş yerimizin yoğun trafik alanına AC5 sınıfı parke döşendi. Hafta sonu çalışma programına uyarak ticari faaliyetimizi aksatmadılar.",
   },
 ]
 
@@ -49,8 +45,8 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-primary font-medium text-sm mb-4"
           >
-            <Star className="w-4 h-4 fill-primary" />
-            <span>Mutlu Müşterilerimiz</span>
+            <CheckCircle2 className="w-4 h-4 text-primary" />
+            <span>Saha Deneyimleri</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -59,8 +55,11 @@ export function Testimonials() {
             transition={{ delay: 0.1 }}
             className="text-4xl lg:text-5xl font-bold text-foreground"
           >
-            Google <span className="text-primary">Yorumları</span>
+            Müşteri Deneyimleri ve <span className="text-primary">Geri Bildirimler</span>
           </motion.h2>
+          <p className="text-foreground/70 max-w-2xl mx-auto mt-3 text-sm">
+            Farklı bölgelerdeki konut ve ofis parke döşeme uygulamalarımız sonrasında müşterilerimizin paylaştığı deneyimler.
+          </p>
         </div>
 
         <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
@@ -74,24 +73,25 @@ export function Testimonials() {
                 transition={{ delay: idx * 0.1 }}
                 className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4"
               >
-                <div className="h-full glass p-8 rounded-3xl border border-white/20 shadow-xl relative">
-                  <MessageSquareQuote className="absolute top-6 right-6 w-12 h-12 text-primary/10" />
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                    ))}
-                  </div>
-                  <p className="text-foreground/80 italic mb-6 leading-relaxed relative z-10">
+                <div className="h-full glass p-8 rounded-3xl border border-white/20 shadow-xl relative flex flex-col justify-between">
+                  <MessageSquareQuote className="absolute top-6 right-6 w-10 h-10 text-primary/15" />
+                  <p className="text-foreground/80 italic mb-6 leading-relaxed relative z-10 text-sm">
                     &ldquo;{t.comment}&rdquo;
                   </p>
                   <div>
                     <h4 className="font-bold text-foreground">{t.name}</h4>
-                    <p className="text-sm text-foreground/50">{t.location}</p>
+                    <p className="text-xs text-foreground/60">{t.location}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+
+        <div className="text-center pt-2">
+          <p className="text-xs text-foreground/50">
+            * Müşteri geri bildirimleri saha uygulamalarımız sonrası derlenmiştir. Doğrulanmış Google İşletme yorumları işletme onayına tabidir.
+          </p>
         </div>
       </div>
     </section>

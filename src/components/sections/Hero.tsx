@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Phone, ArrowRight, Star } from 'lucide-react'
+import { Phone, ArrowRight, ShieldCheck, Ruler } from 'lucide-react'
 
 interface HeroProps {
   title?: string;
@@ -19,7 +19,7 @@ export function Hero({
   title = "İstanbul", 
   highlight = "Parke Döşeme", 
   subtitle = "ve Parke Ustası Hizmeti",
-  description = "30+ yıllık deneyim ile İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde kaliteli, garantili ve lüks parke uygulaması. Yaşam alanlarınızı modern ve estetik zeminlerle yenileyin.",
+  description = "İstanbul, Anadolu Yakası, Gebze ve Kocaeli genelinde uzman usta işçiliği ile laminat parke döşeme, süpürgelik montajı ve zemin tamiri çözümleri. Yaşam alanlarınızı estetik ve dayanıklı zeminlerle yenileyin.",
   imageAlt = "İstanbul parke ustası profesyonel parke döşeme hizmeti",
   customH1
 }: HeroProps) {
@@ -49,8 +49,8 @@ export function Hero({
             className="space-y-8"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-primary font-medium text-sm">
-              <Star className="w-4 h-4 fill-primary" />
-              <span>Google&apos;da 5 Yıldızlı Hizmet</span>
+              <ShieldCheck className="w-4 h-4 text-primary" />
+              <span>Profesyonel Parke & Zemin İşçiliği</span>
             </div>
             
             {customH1 ? (
@@ -83,26 +83,6 @@ export function Hero({
                 </a>
               </Button>
             </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-8 border-t border-border/50">
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-foreground">1000+</p>
-                <p className="text-xs sm:text-sm text-foreground/70">Mutlu Müşteri</p>
-              </div>
-              <div className="w-px h-10 sm:h-12 bg-border/50"></div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-foreground">30+</p>
-                <p className="text-xs sm:text-sm text-foreground/70">Yıllık Deneyim</p>
-              </div>
-              <div className="hidden sm:block w-px h-12 bg-border/50"></div>
-              <div className="flex flex-col justify-center">
-                <div className="flex gap-1">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-accent text-accent" />)}
-                </div>
-                <p className="text-xs sm:text-sm text-foreground/70 mt-1">Google Puanı</p>
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Content / CTA Card */}
@@ -115,12 +95,12 @@ export function Hero({
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 blur-3xl rounded-full" />
             <div className="relative glass p-8 rounded-3xl border border-white/20 shadow-2xl flex flex-col items-center text-center space-y-6">
               <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-2">
-                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                  <Star className="w-8 h-8 text-white fill-white" />
+                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white">
+                  <Ruler className="w-8 h-8" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-foreground">Ücretsiz Keşif Fırsatı</h3>
-              <p className="text-foreground/70">Evinize veya iş yerinize gelip, alanınızı ölçüyor ve size en uygun fiyatı sunuyoruz.</p>
+              <p className="text-foreground/70">Evinize veya iş yerinize gelip alanınızı lazer metreyle ölçüyor ve şeffaf işçilik teklifinizi hazırlıyoruz.</p>
               <Button size="lg" className="w-full rounded-full h-14 text-lg" asChild>
                  <a href="#hesaplama">Tahmini Fiyat Hesapla</a>
               </Button>
@@ -132,4 +112,3 @@ export function Hero({
     </section>
   )
 }
-

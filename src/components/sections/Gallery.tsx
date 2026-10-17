@@ -14,7 +14,7 @@ const baseProjects = [
   { id: 3, title: "Lake Süpürgelik Montajı", service: "Lake Süpürgelik", src: "/images/gallery/g3.jpg" },
   { id: 4, title: "Modern Salon Parke Döşeme", service: "Salon Zemin Kaplama", src: "/images/gallery/g4.jpg" },
   { id: 5, title: "Detay Süpürgelik Gönye İşçiliği", service: "Süpürgelik İşçiliği", src: "/images/gallery/g5.jpg" },
-  { id: 6, title: "Garantili Parke Uygulaması", service: "Laminat Montaj", src: "/images/gallery/g6.jpg" },
+  { id: 6, title: "Özenli Parke Uygulaması", service: "Laminat Montaj", src: "/images/gallery/g6.jpg" },
 ]
 
 export function Gallery({ districtName }: GalleryProps) {

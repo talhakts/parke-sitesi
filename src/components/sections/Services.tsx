@@ -33,27 +33,27 @@ const services = [
   },
   {
     title: "Eski Parke Sökümü",
-    description: "Zemine zarar vermeden mevcut parkelerin sökülüp temizlenmesi.",
+    description: "Zemine zarar vermeden mevcut parkelerin sökülmesi, harç temizliği ve moloz çuvallama.",
     icon: Trash2,
-    href: "/parke-doseme-fiyatlari",
+    href: "/parke-doseme-fiyatlari#eski-parke-sokumu",
   },
   {
     title: "Ofis Projeleri",
-    description: "Çalışma alanlarına özel akustik ve dayanıklı ticari zemin çözümleri.",
+    description: "Çalışma alanlarına özel AC5 yoğun trafik ve tekerlekli sandalye dayanımlı zeminler.",
     icon: Briefcase,
-    href: "/hizmetler/laminat-parke-doseme",
+    href: "/hizmetler/laminat-parke-doseme#ofis-projeleri",
   },
   {
     title: "Villa ve Ev",
-    description: "Lüks konutlar için estetik, tok sesli ve premium zemin tasarımları.",
+    description: "Lüks konutlar için 10-12 mm derzli planklar ve yerden ısıtma uyumlu zeminler.",
     icon: Home,
-    href: "/hizmetler/laminat-parke-doseme",
+    href: "/hizmetler/laminat-parke-doseme#villa-ve-ev",
   },
   {
     title: "PVC & LVT Zemin",
-    description: "Suya tam dayanıklı, yoğun trafiğe uygun estetik ticari alan kaplamaları.",
+    description: "Mutfak ve ıslak hacimlere özel 100% suya dayanıklı SPC ve vinil kaplamalar.",
     icon: Store,
-    href: "/hizmetler/laminat-parke-doseme",
+    href: "/hizmetler/laminat-parke-doseme#suya-dayanikli-zeminler",
   }
 ]
 

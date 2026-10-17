@@ -178,7 +178,7 @@ export function DistrictContent({ district }: DistrictContentProps) {
               Neden <span className="text-primary">{district.name}</span> İçin Parke Ustam?
             </h3>
             <p className="text-foreground/70">
-              {district.name} semtlerinde 30 yılı aşkın süredir sunduğumuz kaliteli ve garantili hizmetin avantajları.
+              {district.name} genelinde sunduğumuz profesyonel ve özenli zemin işçiliğinin avantajları.
             </p>
           </div>
 
@@ -248,7 +248,7 @@ export function DistrictContent({ district }: DistrictContentProps) {
               <span>{district.name} Genelinde Hizmet Verdiğimiz Mahalleler</span>
             </h4>
             <p className="text-sm text-foreground/70">
-              {district.name} ilçesindeki tüm semt ve mahallelerde aynı gün keşif ve hızlı montaj ekibimiz bulunmaktadır:
+              {district.name} ilçesindeki mahallelerde randevulu yerinde ücretsiz keşif ve planlı montaj hizmeti sunuyoruz:
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {district.neighborhoods.map((n, idx) => (
@@ -277,7 +277,7 @@ export function DistrictContent({ district }: DistrictContentProps) {
             </div>
             
             <p className="text-sm text-foreground/70 leading-relaxed">
-              {district.name} parke ustası kadromuz ilçe genelindeki tüm mahallelerde aktif olarak çalışmaktadır. Ayrıca {district.name}&apos;e komşu bölgelerdeki projeleriniz için de aynı gün ücretsiz keşif ve montaj hizmeti veriyoruz:
+              {district.name} parke ustası kadromuz ilçe genelindeki tüm mahallelerde aktif olarak çalışmaktadır. Ayrıca {district.name}&apos;e komşu bölgelerdeki projeleriniz için de ücretsiz keşif ve profesyonel parke montajı hizmeti veriyoruz:
             </p>
 
             <div className="flex flex-wrap gap-2.5 pt-2">
@@ -312,7 +312,7 @@ export function DistrictContent({ district }: DistrictContentProps) {
               </h3>
             </div>
 
-            <Accordion className="w-full space-y-3">
+            <Accordion defaultValue={["district-faq-0"]} className="w-full space-y-3">
               {district.faqs.map((faq, index) => (
                 <AccordionItem 
                   key={index} 

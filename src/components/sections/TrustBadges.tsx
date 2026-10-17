@@ -2,23 +2,23 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Award, ThumbsUp } from 'lucide-react'
+import { ShieldCheck, Award, Sparkles } from 'lucide-react'
 
 const features = [
   {
     icon: Award,
-    title: "30+ Yıllık Deneyim",
-    description: "Sektörde uzmanlaşmış profesyonel kadro."
+    title: "Usta Tecrübesi",
+    description: "Zemin kaplama ve parke montajında saha uzmanlığı."
   },
   {
     icon: ShieldCheck,
-    title: "Garantili İşçilik",
-    description: "Tüm uygulamalarımızda %100 memnuniyet garantisi."
+    title: "İşçilik Güvencesi",
+    description: "Doğru dilatasyon payı ve teknik montaj standartları."
   },
   {
-    icon: ThumbsUp,
-    title: "1000+ Tamamlanan İş",
-    description: "Yüzlerce mutlu müşteri ve referans."
+    icon: Sparkles,
+    title: "Temiz ve Titiz Teslimat",
+    description: "Atıkların çuvallanması ve süpürülmüş zemin kontrolü."
   }
 ]
 
@@ -48,4 +48,3 @@ export function TrustBadges() {
     </section>
   )
 }
-

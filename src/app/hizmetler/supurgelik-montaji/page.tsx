@@ -43,19 +43,27 @@ export const metadata: Metadata = {
 const skirtingFaqs = [
   {
     question: "Süpürgelik montajında neden 45 derece gönye kesim önemlidir?",
-    answer: "İç ve dış köşelerde düz bindirme yapıldığında çirkin boşluklar ve kesik hatlar oluşur. Profesyonel gönye testeresiyle yapılan 45 derecelik açılı kesimler iki parçanın sıfıra sıfır kilitlenmesini sağlayarak mobilya kalitesinde şık bir görünüm sunar."
+    answer: "İç ve dış köşe birleşimlerinde düz bindirme yapıldığında çirkin boşluklar, kademeli çıkıntılar ve kesik hatlar oluşur. Profesyonel açılı gönye testeresiyle yapılan 45 derecelik açılı kesimler iki parçanın sıfıra sıfır kilitlenmesini sağlayarak mobilya kalitesinde şık bir görünüm sunar."
   },
   {
     question: "Lake süpürgelik mi yoksa PVC süpürgelik mi önerirsiniz?",
-    answer: "Lake ve yüksek kaliteli beyaz MDF süpürgelikler (8-10 cm) duvar ile zemin arasında çok daha modern ve elit bir mimari çizgi oluşturur. PVC süpürgelikler ise suya tam dayanıklı olduğu için balkon veya nemli alanlarda pratik bir çözümdür."
+    answer: "Lake ve yüksek kaliteli beyaz MDF süpürgelikler (özellikle 8 cm ve 10 cm) duvar ile zemin arasında çok daha modern, tok ve elit bir mimari çizgi oluşturur. PVC süpürgelikler ise doğrudan su alan balkon, çamaşır odası veya nemli bodrum katlarında pratik bir alternatiftir."
   },
   {
     question: "Mevcut parkeyi değiştirmeden sadece süpürgelikleri yenileyebilir misiniz?",
-    answer: "Evet, sadece süpürgelik yenileme ve montajı yapıyoruz. Eski yıpranmış veya dar süpürgeliklerinizi söküp yerine 8 cm veya 10 cm modern beyaz lake süpürgelikler monte edebiliyoruz."
+    answer: "Evet, sadece süpürgelik yenileme ve montajı hizmeti veriyoruz. Eski, sararmış, dar veya yıpranmış süpürgeliklerinizi söküp yerine 8 cm veya 10 cm modern beyaz lake süpürgelikler monte edebiliyoruz."
   },
   {
     question: "Süpürgeliklerin arkasından kablo geçirilebilir mi?",
-    answer: "Kullandığımız MDF ve PVC süpürgelik modellerinin birçoğunda kablo kanalı boşluğu mevcuttur. TV, internet veya elektrik kablolarını duvar kırmadan süpürgelik arkasına gizleyebiliyoruz."
+    answer: "Kullandığımız MDF ve PVC süpürgelik modellerinin birçoğunda kablo kanalı boşluğu mevcuttur. TV, internet veya elektrik kablolarını duvar kırmadan süpürgelik arkasına gizleyerek estetik ve düzenli bir görünüm elde ediyoruz."
+  },
+  {
+    question: "Süpürgelik montajında yapıştırma mı yoksa çivileme mi daha sağlıklıdır?",
+    answer: "Modern uygulamalarda yüksek tutunma mukavemetine sahip hibrit polimer montaj yapıştırıcıları (silikon mastik) kullanılır. Duvar yüzeyi bozuk veya dalgalı olan noktalarda yapıştırıcı kuruyana kadar süpürgeliği sabitlemek amacıyla başsız ince çivi (pin çivi) ile desteklenir."
+  },
+  {
+    question: "Eğri veya dalgalı duvarlarda süpürgelik montajı nasıl yapılır?",
+    answer: "Eski binalarda duvarlar tamamen gönyesinde olmayabilir. Bu gibi durumlarda süpürgelik üst kenarı boyunca duvara uyumlu renkte boyanabilir akrilik mastik çekilerek aradaki boşluklar tamamen kapatılır ve kusursuz bir bitiş sağlanır."
   }
 ];
 
@@ -178,7 +186,7 @@ export default function SkirtingInstallationPage() {
                 <div className="p-4 rounded-2xl bg-background/70 border border-border/40 space-y-1.5">
                   <span className="font-bold text-primary block">10 - 12 cm Avangart Lüks Süpürgelik</span>
                   <p className="text-xs text-foreground/70">
-                    Yüksek tavanlı salonlar, villalar ve geniş dairelerde zemin ile duvarı saray havasında birleştiren prestijli model.
+                    Yüksek tavanlı salonlar, villalar ve geniş dairelerde zemin ile duvarı estetik birleştiren prestijli model.
                   </p>
                 </div>
               </div>
@@ -192,7 +200,7 @@ export default function SkirtingInstallationPage() {
               <h3>Süpürgelik Montaj Hizmeti Sunduğumuz Bölgeler</h3>
             </div>
             <p className="text-sm text-foreground/70 leading-relaxed">
-              İstanbul genelinde ve özellikle Anadolu Yakası&apos;nda süpürgelik değişimi ve montajı için aynı gün hizmet veriyoruz:
+              İstanbul genelinde ve özellikle Anadolu Yakası ilçelerimizde süpürgelik montajı ve değişimi için mobil servis sunuyoruz:
             </p>
             <div className="flex flex-wrap gap-2.5 pt-2">
               {[
@@ -231,7 +239,7 @@ export default function SkirtingInstallationPage() {
             </h2>
           </div>
 
-          <Accordion className="w-full space-y-3">
+          <Accordion defaultValue={["faq-0"]} className="w-full space-y-3">
             {skirtingFaqs.map((faq, index) => (
               <AccordionItem
                 key={index}

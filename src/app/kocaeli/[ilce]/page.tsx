@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = districtInfo?.metaTitle || `${district.name} Parke Ustası | Kocaeli Parke Döşeme`;
   const description = districtInfo?.metaDescription || (districtInfo?.intro 
     ? `${districtInfo.intro.slice(0, 155)}...`
-    : `${district.name} ilçesinde profesyonel laminat parke, süpürgelik montajı ve parke döşeme hizmeti. 30 yılı aşkın tecrübemizle ücretsiz keşif için bizi arayın!`);
+    : `${district.name} ilçesinde profesyonel laminat parke, süpürgelik montajı ve parke döşeme hizmeti. Uzman işçilik ve ücretsiz keşif için bizi arayın!`);
 
   return {
     title,
@@ -83,16 +83,16 @@ export default async function KocaeliDistrictPage({ params }: Props) {
     slug: district.slug,
     name: district.name,
     region: district.region,
-    intro: `${district.name} genelinde sanayi, ticaret ve konut projelerinde uzman ekibimizle kaliteli laminat parke ve süpürgelik montajı sunuyoruz. 30 yılı aşkın tecrübemiz ve yerel ekibimizle aynı gün keşif yapıyoruz.`,
+    intro: `${district.name} genelinde sanayi, ticaret ve konut projelerinde uzman ekibimizle kaliteli laminat parke ve süpürgelik montajı sunuyoruz. Yerel usta kadromuzla ücretsiz keşif desteği sağlıyoruz.`,
     neighbors: [
       { name: "Gebze", slug: "gebze", region: "kocaeli" as const },
       { name: "İzmit", slug: "izmit", region: "kocaeli" as const },
       { name: "Tuzla", slug: "tuzla", region: "istanbul" as const }
     ],
     highlights: [
-      `${district.name} bölgesine aynı gün hızlı ve ücretsiz keşif`,
+      `${district.name} bölgesine yerinde ücretsiz keşif`,
       "Yoğun kullanıma dayanıklı 32. ve 33. sınıf ticari & konut parkeleri",
-      "1 günde temiz teslimat ve işçilik garantisi"
+      "Temiz teslimat ve özenli montaj işçiliği"
     ],
     faqs: [
       {

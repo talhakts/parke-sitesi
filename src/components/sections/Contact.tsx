@@ -103,10 +103,10 @@ export function Contact({ initialDistrict = "" }: ContactProps) {
             <div className="p-5 rounded-2xl bg-primary/5 border border-primary/20 space-y-2">
               <p className="font-semibold text-foreground text-sm flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                Hızlı Yanıt Garantisi
+                Hızlı İletişim & Geri Dönüş
               </p>
               <p className="text-xs text-foreground/70">
-                Form üzerinden veya WhatsApp ile gönderilen taleplere genellikle 15 dakika içerisinde dönüş yapılıp ücretsiz keşif planlanır.
+                Form üzerinden veya WhatsApp ile ilettiğiniz taleplere mesai saatleri içerisinde en kısa sürede dönüş yapılarak yerinde ücretsiz keşif planlanır.
               </p>
             </div>
           </motion.div>

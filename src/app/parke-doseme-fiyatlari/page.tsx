@@ -6,7 +6,7 @@ import { TrustBadges } from '@/components/sections/TrustBadges';
 import { PriceCalculator } from '@/components/sections/PriceCalculator';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Contact } from '@/components/sections/Contact';
-import { CircleDollarSign, MapPin, HelpCircle, AlertCircle } from 'lucide-react';
+import { CircleDollarSign, MapPin, HelpCircle, AlertCircle, Trash2, Layers } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -16,14 +16,15 @@ import {
 
 export const metadata: Metadata = {
   title: "Parke Döşeme Fiyatları 2026 | İşçilik ve Metrekare Maliyetleri",
-  description: "İstanbul ve Anadolu Yakası'nda 2026 güncel laminat parke döşeme, süpürgelik ve eski zemin söküm işçilik fiyatları. Canlı hesaplama aracı ve ücretsiz keşif fırsatı.",
+  description: "İstanbul ve Anadolu Yakası'nda 2026 güncel laminat parke döşeme, süpürgelik ve eski zemin söküm işçilik faktörleri. Şeffaf maliyet rehberi ve ücretsiz keşif.",
   keywords: [
     "parke döşeme fiyatları",
     "parke işçilik fiyatları",
     "laminat parke m2 fiyatı",
     "pendik parke döşeme fiyatları",
     "parke montaj fiyatı",
-    "süpürgelik montaj fiyatı"
+    "süpürgelik montaj fiyatı",
+    "eski parke sökümü fiyatı"
   ],
   alternates: {
     canonical: "/parke-doseme-fiyatlari",
@@ -41,19 +42,27 @@ export const metadata: Metadata = {
 const pricingFaqs = [
   {
     question: "Verilen fiyatlara malzeme dahil midir?",
-    answer: "Sitemizdeki fiyat hesaplama aracı ve temel fiyat listelerimiz profesyonel 'işçilik' bedellerini kapsar. Müşterilerimiz parkeyi kendileri temin edebilir veya dilerlerse kaliteli anlaşmalı markalarımızdan malzeme dahil anahtar teslim teklif alabilirler."
+    answer: "Sitemizdeki fiyat hesaplama aracı ve temel fiyat bilgilendirmelerimiz profesyonel 'işçilik' bedellerini kapsar. Müşterilerimiz parkeyi diledikleri yapı market veya markadan kendileri temin edebilir; ya da talep edilirse kaliteli anlaşmalı üreticilerimizden malzeme dahil anahtar teslim teklif sunuyoruz."
   },
   {
     question: "Net fiyat ne zaman kesinleşir?",
-    answer: "En net ve kesin fiyat, ustanızın mekanınıza gelerek lazer metre ile yapacağı ücretsiz keşif ve zemin düzlük incelemesinin hemen ardından yazılı olarak verilir. Keşif sonrası asla sürpriz ek masraf çıkarılmaz."
+    answer: "En net ve kesin fiyat, ustanızın mekanınıza gelerek lazer metre ile yapacağı ücretsiz keşif ve zemin düzlük (şap/mastar) incelemesinin hemen ardından yazılı olarak verilir. Keşif sonrası anlaşılan şartlar dışında asla sürpriz ek masraf çıkarılmaz."
   },
   {
     question: "Eşyalı evlerde işçilik fiyatı neden farklıdır?",
-    answer: "Eşyalı evlerde mobilyaların zarar görmeden oda oda taşınması, parke altına süpürülmesi ve montaj sonrası yerine yerleştirilmesi ilave iş gücü ve mesai gerektirdiğinden cüzi bir eşya taşıma payı yansıtılır."
+    answer: "Eşyalı evlerde mobilyaların zarar görmeden oda oda taşınması, zemin altının süpürülüp temizlenmesi ve montaj sonrası mobilyaların tekrar yerleştirilmesi ilave iş gücü ve mesai gerektirdiğinden cüzi bir eşya taşıma payı yansıtılır."
   },
   {
     question: "Eski parkelerin sökümü ücrete tabi midir?",
-    answer: "Mevcut parkenin sökülmesi, çivilerin temizlenmesi ve çıkan atıkların çuvallanması ek bir işçilik kalemidir. Keşif sırasında belirtilerek toplam fiyata şeffaf şekilde dahil edilir."
+    answer: "Evet. Mevcut eski laminat veya yapışkanlı ahşap parkelerin sökülmesi, süpürgeliklerin çıkarılması, çivi ve harç artıklarının kazınması ile molozların çuvallanması ayrı bir işçilik kalemidir. Keşif sırasında alan incelenerek fiyata şeffaf biçimde eklenir."
+  },
+  {
+    question: "Metrekare büyüklüğü arttıkça işçilik fiyatı nasıl değişir?",
+    answer: "Toplam döşeme alanı büyüdükçe (örneğin 100 m² ve üzeri açık veya geniş planlı dairelerde) birim metrekare işçilik bedeli daha ekonomik hale gelir. Buna karşılık çok küçük, kolonlu ve fazla girintili odalarda kesim firesi ve köşe işçiliği arttığı için birim maliyet farklılaşabilir."
+  },
+  {
+    question: "Fiyat teklifine süpürgelik montajı dahil midir?",
+    answer: "Süpürgelik montajı tül metre (metre uzunluğu) üzerinden hesaplanır. Standart plastik süpürgelik ile 8-10 cm beyaz lake MDF gönye kesimli lüks süpürgeliklerin montaj işçiliği farklıdır. Keşif sırasında toplam tül metre ölçülerek teklife kalem olarak yansıtılır."
   }
 ];
 
@@ -99,7 +108,7 @@ export default function PricingGuidePage() {
         title="2026 Güncel"
         highlight="Parke Döşeme Fiyatları"
         subtitle="ve Şeffaf İşçilik Rehberi"
-        description="İstanbul genelinde laminat parke döşeme, süpürgelik montajı ve zemin tamiri işçilik maliyetlerini inceleyin. Sürpriz ek maliyet olmadan şeffaf fiyatlandırma ve yerinde ücretsiz keşif."
+        description="İstanbul genelinde laminat parke döşeme, süpürgelik montajı ve zemin hazırlığı işçilik faktörlerini inceleyin. Sürpriz ek maliyet olmadan şeffaf fiyatlandırma ve yerinde ücretsiz keşif."
         imageAlt="İstanbul parke döşeme işçilik fiyatları hesaplama"
       />
 
@@ -127,7 +136,7 @@ export default function PricingGuidePage() {
               <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs sm:text-sm text-foreground/80 flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Önemli Not:</strong> İnternet üzerinde piyasa gerçekleriyle uyuşmayan gerçek dışı aşırı düşük fiyat vaatlerine karşı dikkatli olunuz. Düşük fiyatlı acemi işçilikler genleşme payı bırakılmaması sebebiyle parkelerinizin kabarmasına yol açabilir.
+                  <strong>Önemli Bilgilendirme:</strong> İnternet üzerinde piyasa gerçekleriyle uyuşmayan gerçek dışı aşırı düşük fiyat vaatlerine karşı dikkatli olunuz. Yetersiz genleşme payı bırakılan veya mastarsız şap üzerine yapılan acemi montajlar, birkaç ay sonra parkelerin kabarmasına ve yüksek tamir masraflarına yol açar.
                 </span>
               </div>
             </div>
@@ -169,6 +178,96 @@ export default function PricingGuidePage() {
             </div>
           </div>
 
+          {/* Section: İşçilik vs. Malzeme Ayrımı (Priority 6) */}
+          <div className="glass p-8 sm:p-10 rounded-3xl border border-border/60 space-y-6">
+            <div className="flex items-center gap-3 text-primary">
+              <Layers className="w-6 h-6" />
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground">İşçilik vs. Malzeme: Fiyatlandırma Nasıl Yapılır?</h3>
+            </div>
+            <p className="text-foreground/80 leading-relaxed text-sm sm:text-base">
+              Zemin yenileme projelerinde bütçenizi doğru yönetebilmeniz için malzeme ve işçilik kalemlerinin ayrımını bilmeniz önemlidir:
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-5 rounded-2xl bg-background/70 border border-border/50 space-y-3">
+                <span className="font-bold text-primary text-lg block">1. Salt İşçilik Kalemleri</span>
+                <ul className="text-xs sm:text-sm text-foreground/80 space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Laminat Montajı:</strong> Metrekare bazında zemin kilitli döşeme işçiliği.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Şilte Serimi:</strong> Nem bariyeri ve akustik izolasyonun döşenmesi.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Süpürgelik Montajı:</strong> Duvar çevresi tül metre ölçümü ve 45° gönye kesimi.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Kapı Altı Uyarlamaları:</strong> Yükselen zemin kotuna göre kapı altı traşlama.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-background/70 border border-border/50 space-y-3">
+                <span className="font-bold text-primary text-lg block">2. Malzeme Kalemleri</span>
+                <ul className="text-xs sm:text-sm text-foreground/80 space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Parke Paketleri:</strong> Net alan üzerine %5-10 fire payı eklenerek hesaplanan paket miktarı.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Zemin Şiltesi:</strong> 2-3 mm kapalı hücreli veya yerden ısıtma delikli şilte rulosu.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Süpürgelik ve Profiller:</strong> Boy bazında lake MDF profiller ve eşik geçiş çıtaları.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                    <span><strong>Sarf Malzemeler:</strong> Montaj yapıştırıcısı, çivi ve akrilik mastik dolguları.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Dedicated Section: Eski Parke Sökümü ve Zemin Hazırlığı (Priority 2 & 6 Anchor Target) */}
+          <div id="eski-parke-sokumu" className="scroll-mt-24 glass p-8 sm:p-10 rounded-3xl border border-primary/30 space-y-6">
+            <div className="flex items-center gap-3 text-primary">
+              <Trash2 className="w-6 h-6" />
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground">Eski Parke Sökümü ve Zemin Hazırlığı İşçiliği</h3>
+            </div>
+            <p className="text-foreground/80 leading-relaxed text-sm sm:text-base">
+              Yeni parkenizin uzun ömürlü olması, altındaki zeminin düzgünlüğüne ve temizliğine bağlıdır. Mevcut eski zeminlerin söküm ve hazırlık süreci şu aşamalardan oluşur:
+            </p>
+            <div className="grid md:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 rounded-2xl bg-background/60 border border-border/40 space-y-2">
+                <span className="font-semibold text-foreground text-sm block">1. Söküm ve Ayrıştırma</span>
+                <p className="text-xs text-foreground/70 leading-relaxed">
+                  Eski laminat veya yapışkanlı parkeler duvara ve kapı kasalarına zarar vermeden sökülür, eski süpürgelikler çıkarılır.
+                </p>
+              </div>
+              <div className="p-4 rounded-2xl bg-background/60 border border-border/40 space-y-2">
+                <span className="font-semibold text-foreground text-sm block">2. Çivi, Harç ve Toz Temizliği</span>
+                <p className="text-xs text-foreground/70 leading-relaxed">
+                  Beton şap üzerindeki harç tümsekleri kazınır, eski çiviler sökülür ve zemin süpürülerek tozdan arındırılır.
+                </p>
+              </div>
+              <div className="p-4 rounded-2xl bg-background/60 border border-border/40 space-y-2">
+                <span className="font-semibold text-foreground text-sm block">3. Moloz Çuvallama ve Zemin Düzeltme</span>
+                <p className="text-xs text-foreground/70 leading-relaxed">
+                  Çıkan atıklar düzenli şekilde çuvallanır. Şapta 2 mm üzerinde kot farkı varsa lokal tamir harcı veya tesviye uygulanır.
+                </p>
+              </div>
+            </div>
+            <div className="p-4 rounded-2xl bg-background/60 border border-border/40 text-xs sm:text-sm text-foreground/70">
+              * Söküm işçilik fiyatı, mevcut zeminin kilitli laminat mı yoksa ziftli/yapışkanlı masif parke mi olduğuna ve moloz nakliye ihtiyacına göre yerinde keşifte belirlenir.
+            </div>
+          </div>
+
           {/* İlçelere Doğal İç Bağlantılar */}
           <div className="glass p-8 rounded-3xl border border-border/50 space-y-4">
             <div className="flex items-center gap-2 text-primary font-bold text-lg">
@@ -176,7 +275,7 @@ export default function PricingGuidePage() {
               <h3>Bölgesel Parke İşçilik Fiyatları ve Keşif</h3>
             </div>
             <p className="text-sm text-foreground/70 leading-relaxed">
-              Öncelikli olarak İstanbul Anadolu Yakası ve Kocaeli ilçelerine aynı gün ücretsiz keşif servisi sunuyoruz:
+              Öncelikli olarak İstanbul Anadolu Yakası ve Kocaeli ilçelerine yerinde ücretsiz keşif desteği sunuyoruz:
             </p>
             <div className="flex flex-wrap gap-2.5 pt-2">
               {[
@@ -219,7 +318,7 @@ export default function PricingGuidePage() {
             </h2>
           </div>
 
-          <Accordion className="w-full space-y-3">
+          <Accordion defaultValue={["faq-0"]} className="w-full space-y-3">
             {pricingFaqs.map((faq, index) => (
               <AccordionItem
                 key={index}
